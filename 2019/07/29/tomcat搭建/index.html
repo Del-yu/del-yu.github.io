@@ -59,14 +59,23 @@
 <h3 id="进入local"><a href="#进入local" class="headerlink" title="进入local"></a>进入local</h3><p>进入apache文件夹<br>进入 cd conf<br>编辑server.xml文件夹   vim server.xml<br>把端口改成80</p>
 <h3 id="设置-tomcat-密码"><a href="#设置-tomcat-密码" class="headerlink" title="设置 tomcat 密码"></a>设置 tomcat 密码</h3><p>打开”conf“文件夹<br>再打开”tomcat-users.xml“文件<br>我们将”<user username="用户名" password="设置的密码" roles="manager-gui">“放到user最下面，保存。</user></p>
 <h3 id="启动-tomcat"><a href="#启动-tomcat" class="headerlink" title="启动 tomcat"></a>启动 tomcat</h3><p>回到有bin那一层<br>启动tomcat      ./startup.sh</p>
-<h3 id="配置防火墙"><a href="#配置防火墙" class="headerlink" title="配置防火墙"></a>配置防火墙</h3><p>启动防火墙<br>systemctl start firewalld<br>将80端口添加到防火墙例外并重启<br>firewall-cmd –zone=public –add-port=80/tcp –permanent<br>重启防火墙<br>systemctl restart firewalld</p>
+<h3 id="配置防火墙"><a href="#配置防火墙" class="headerlink" title="配置防火墙"></a>配置防火墙</h3><p>启动防火墙</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
+
+<p>将80端口添加到防火墙例外并重启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br></pre></td></tr></table></figure>
+
+<p>重启防火墙</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure>
+
 <h3 id="搭建完成"><a href="#搭建完成" class="headerlink" title="搭建完成"></a>搭建完成</h3><p>用浏览器进入127.0.0.1地址，查看是否成功！</p>
-<h3 id="关闭tomcat"><a href="#关闭tomcat" class="headerlink" title="关闭tomcat"></a>关闭tomcat</h3><p>/usr/local/tomcat/bin/shutdown.s</p>
+<h3 id="关闭tomcat"><a href="#关闭tomcat" class="headerlink" title="关闭tomcat"></a>关闭tomcat</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="built_in">local</span>/tomcat/bin/shutdown.s</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/29/tomcat搭建/" data-id="cjyocwk4s0001isvql24e4zms"
+      <a data-url="http://yoursite.com/2019/07/29/tomcat搭建/" data-id="cjypr4joh0003awvqs8up2att"
          class="article-share-link">分享</a>
       
     </footer>

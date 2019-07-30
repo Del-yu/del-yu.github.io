@@ -55,16 +55,34 @@
       
 
       
-        <h2 id="Apache搭建"><a href="#Apache搭建" class="headerlink" title="Apache搭建"></a>Apache搭建</h2><h3 id="在虚拟机中使用-yum-安装-apache"><a href="#在虚拟机中使用-yum-安装-apache" class="headerlink" title="在虚拟机中使用 yum 安装 apache"></a>在虚拟机中使用 yum 安装 apache</h3><p>yum install httpd httpd-devel httpd-manual mod_ssl mod_perl mod_auth_mysql</p>
+        <h2 id="Apache搭建"><a href="#Apache搭建" class="headerlink" title="Apache搭建"></a>Apache搭建</h2><h3 id="在虚拟机中使用-yum-安装-apache"><a href="#在虚拟机中使用-yum-安装-apache" class="headerlink" title="在虚拟机中使用 yum 安装 apache"></a>在虚拟机中使用 yum 安装 apache</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install httpd httpd-devel httpd-manual mod_ssl mod_perl mod_auth_mysql</span><br></pre></td></tr></table></figure>
+
 <h3 id="安装成功后，关闭防火墙，浏览器输入自己ip，查看搭建是否成功"><a href="#安装成功后，关闭防火墙，浏览器输入自己ip，查看搭建是否成功" class="headerlink" title="安装成功后，关闭防火墙，浏览器输入自己ip，查看搭建是否成功"></a>安装成功后，关闭防火墙，浏览器输入自己ip，查看搭建是否成功</h3><h3 id="apache-的根目录"><a href="#apache-的根目录" class="headerlink" title="apache 的根目录"></a>apache 的根目录</h3><p>/var/www/html/ 服务器文件夹</p>
 <h3 id="添加80端口通过的规则"><a href="#添加80端口通过的规则" class="headerlink" title="添加80端口通过的规则"></a>添加80端口通过的规则</h3><p>firewall-cmd –zone=public –add-port=80/tcp –permanent<br>–zone  drop：默认丢弃所有包<br>block：拒绝所有外部连接，允许内部发起的连接<br>public：指定外部连接可以进入<br>–add-port   指定添加端口    80/tcp   53/udp<br>–add-service  指定常见服务    http https mysql mssql ssh<br>–permanent  永久生效</p>
 <h3 id="删除80端口通过的规则"><a href="#删除80端口通过的规则" class="headerlink" title="删除80端口通过的规则"></a>删除80端口通过的规则</h3><p>firewall-cmd –zone=public –remove-port=80/tcp –permanent<br>–remove-port     指定删除端口<br>–remove-service  指定删除服务</p>
-<h3 id="防火墙更新规则"><a href="#防火墙更新规则" class="headerlink" title="防火墙更新规则"></a>防火墙更新规则</h3><p>防火墙更新规则<br>firewall-cmd –reload<br>防火墙显示所有规则<br>firewall-cmd –list-all<br>关闭防火墙<br>systemctl stop firewalld<br>查看防火墙状态<br>systemctl status firewalld<br>启动防火墙<br>systemctl start firewalld<br>重启防火墙<br>systemctl restart firewalld</p>
+<h3 id="防火墙更新规则"><a href="#防火墙更新规则" class="headerlink" title="防火墙更新规则"></a>防火墙更新规则</h3><p>防火墙更新规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p>防火墙显示所有规则</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --list-all</span><br></pre></td></tr></table></figure>
+
+<p>关闭防火墙</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld</span><br></pre></td></tr></table></figure>
+
+<p>查看防火墙状态</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl status firewalld</span><br></pre></td></tr></table></figure>
+
+<p>启动防火墙</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
+
+<p>重启防火墙</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart firewalld</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/29/apache搭建/" data-id="cjyocwk4j0000isvqw6bqyw4h"
+      <a data-url="http://yoursite.com/2019/07/29/apache搭建/" data-id="cjypr4jod0001awvqvmtt72yr"
          class="article-share-link">分享</a>
       
     </footer>
@@ -74,6 +92,15 @@
   
     
   <nav class="article-nav">
+    
+      <a href="/2019/07/30/介绍html/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            介绍html
+          
+        </div>
+      </a>
     
     
       <a href="/2019/07/29/tomcat搭建/" class="article-nav-link">

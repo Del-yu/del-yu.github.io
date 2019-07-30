@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    介绍html |
+    
+    Del-yu</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/technology.css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+  <script src="/js/pace.min.js"></script>
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <section class="outer">
+  <article id="post-介绍html" class="article article-type-post" itemscope itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      介绍html
+    </h1>
+  
+
+      </header>
+    
+
+    
+      <div class="article-meta">
+        <a href="/2019/07/30/介绍html/" class="article-date">
+  <time datetime="2019-07-30T11:40:03.310Z" itemprop="datePublished">2019-07-30</time>
+</a>
+        
+      </div>
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+      
+
+      
+        <h2 id="介绍和常用命令"><a href="#介绍和常用命令" class="headerlink" title="介绍和常用命令"></a>介绍和常用命令</h2><h3 id="结构介绍"><a href="#结构介绍" class="headerlink" title="结构介绍"></a>结构介绍</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;title&gt;最上面标题&lt;title&gt;</span><br><span class="line">&lt;meta charset=<span class="string">"utf-8"</span>&gt;编码格式</span><br><span class="line">&lt;h1&gt;大标题&lt;/h1&gt;</span><br><span class="line">&lt;hr&gt;分隔符</span><br><span class="line">&lt;boby&gt;主要内容&lt;/boby&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="form用法"><a href="#form用法" class="headerlink" title="form用法"></a>form用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">"请求的地址，可以目录也可以网站"</span> method=<span class="string">"post"</span> form表单 请求方式</span><br><span class="line">get请求可以在网址框看到；post不可显示</span><br><span class="line">img src=<span class="string">"图片请求地址"</span></span><br><span class="line">input <span class="built_in">type</span>=<span class="string">"submit(登陆或者提交)"</span> name=<span class="string">"submit"</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br><span class="line">&lt;a href=<span class="string">"请求地址"</span>&gt;忘记密码&lt;/a&gt;</span><br><span class="line">&lt;botton&gt;按钮&lt;/botton&gt;</span><br><span class="line">上传文件，form里面添加 enctye=“multipart/form-data”编码方式</span><br></pre></td></tr></table></figure>
+
+<h3 id="input-用法"><a href="#input-用法" class="headerlink" title="input 用法"></a>input 用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;input <span class="built_in">type</span>=<span class="string">"text"</span>&gt;   </span><br><span class="line"><span class="built_in">type</span>类型为text，定义一个可以输入内容文本输入框</span><br><span class="line"></span><br><span class="line">&lt;input <span class="built_in">type</span>=<span class="string">"submit"</span> value=<span class="string">"提交"</span>&gt;  <span class="built_in">type</span>类型为text，定义一个按钮，点击会提交到form表单地址中</span><br><span class="line"></span><br><span class="line">&lt;input <span class="built_in">type</span>=<span class="string">"button"</span> value=<span class="string">"提交"</span>&gt;   <span class="built_in">type</span>为button，定义一个按钮，但是能点击不能提交表单</span><br><span class="line"></span><br><span class="line">&lt;input <span class="built_in">type</span>=<span class="string">"checkbox"</span> &gt; <span class="built_in">type</span>为checkbox，定义一个复选框，点击勾选</span><br><span class="line"></span><br><span class="line">&lt;input <span class="built_in">type</span>=<span class="string">"radio"</span> name=<span class="string">"sex"</span> value=<span class="string">"男"</span>&gt;   <span class="built_in">type</span>为radio，定义一个单选框，点击选中</span><br><span class="line"></span><br><span class="line">&lt;input <span class="built_in">type</span>=<span class="string">"file"</span>&gt;     选择文件上传</span><br><span class="line"></span><br><span class="line">&lt;input <span class="built_in">type</span>=<span class="string">"email"</span>&gt;  定义一个邮箱文本框，输入不是邮箱时，无法提交，并自动给予提示</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/07/30/介绍html/" data-id="cjypr4jo70000awvqhjz6vgjk"
+         class="article-share-link">分享</a>
+      
+    </footer>
+
+  </div>
+
+  
+    
+  <nav class="article-nav">
+    
+    
+      <a href="/2019/07/29/apache搭建/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">如何搭建 Apache 服务器</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+    
+  
+
+</article>
+
+
+
+</section>
+    </div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  <script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/technology.js"></script>
+
+  </div>
+</body>
+</html>
