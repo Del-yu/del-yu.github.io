@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="介绍1）PHP是嵌入html页面中的脚本语言2）目前最流行的网站开发语言3）在几乎所有的平台中都可以运行4）很多的企业都在使用PHP作为开发语言 格式12345&amp;lt;?php        ?&amp;gt;开启短标签支持&amp;lt;?              ?&amp;gt;    &amp;lt;%                %&amp;gt;&amp;lt;script language=&quot;php/text&quot;&amp;gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="介绍PHP">
+<meta property="og:url" content="http://yoursite.com/2019/08/05/PHP（一）/index.html">
+<meta property="og:site_name" content="D-yu">
+<meta property="og:description" content="介绍1）PHP是嵌入html页面中的脚本语言2）目前最流行的网站开发语言3）在几乎所有的平台中都可以运行4）很多的企业都在使用PHP作为开发语言 格式12345&amp;lt;?php        ?&amp;gt;开启短标签支持&amp;lt;?              ?&amp;gt;    &amp;lt;%                %&amp;gt;&amp;lt;script language=&quot;php/text&quot;&amp;gt;">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-05T14:54:30.244Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="介绍PHP">
+<meta name="twitter:description" content="介绍1）PHP是嵌入html页面中的脚本语言2）目前最流行的网站开发语言3）在几乎所有的平台中都可以运行4）很多的企业都在使用PHP作为开发语言 格式12345&amp;lt;?php        ?&amp;gt;开启短标签支持&amp;lt;?              ?&amp;gt;    &amp;lt;%                %&amp;gt;&amp;lt;script language=&quot;php/text&quot;&amp;gt;">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>介绍PHP</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">خانه</a></li>
+         
+          <li><a href="/about/">درباره</a></li>
+         
+          <li><a href="/archives/">نوشته‌ها</a></li>
+         
+          <li><a href="/projects_url">پروژه‌ها</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/08/05/DVWA环境搭建/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">پست پیشین</span>
+      <span id="i-next" class="info" style="display:none;">پست یعدی</span>
+      <span id="i-top" class="info" style="display:none;">بازگشت به بالا</span>
+      <span id="i-share" class="info" style="display:none;">اشتراک‌گذاری</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/05/PHP（一）/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/05/PHP（一）/&text=介绍PHP"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/05/PHP（一）/&title=介绍PHP"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/05/PHP（一）/&is_video=false&description=介绍PHP"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=介绍PHP&body=Check out this article: http://yoursite.com/2019/08/05/PHP（一）/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/05/PHP（一）/&title=介绍PHP"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/05/PHP（一）/&title=介绍PHP"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/05/PHP（一）/&title=介绍PHP"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/05/PHP（一）/&title=介绍PHP"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/05/PHP（一）/&name=介绍PHP&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展名"><span class="toc-number">1.2.</span> <span class="toc-text">扩展名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置环境"><span class="toc-number">1.3.</span> <span class="toc-text">配置环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP中的输入输出"><span class="toc-number">1.4.</span> <span class="toc-text">PHP中的输入输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">1.5.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">1.6.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义变量"><span class="toc-number">1.7.</span> <span class="toc-text">定义变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP中的常量："><span class="toc-number">1.8.</span> <span class="toc-text">PHP中的常量：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义常量"><span class="toc-number">1.9.</span> <span class="toc-text">定义常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#转义"><span class="toc-number">1.10.</span> <span class="toc-text">转义</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        介绍PHP
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">D-yu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-08-05T14:48:34.133Z" itemprop="datePublished">2019-08-05</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>1）PHP是嵌入html页面中的脚本语言<br>2）目前最流行的网站开发语言<br>3）在几乎所有的平台中都可以运行<br>4）很多的企业都在使用PHP作为开发语言</p>
+<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php        ?&gt;</span><br><span class="line">开启短标签支持</span><br><span class="line">&lt;?              ?&gt;    </span><br><span class="line">&lt;%                %&gt;</span><br><span class="line">&lt;script language=<span class="string">"php/text"</span>&gt;        &lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="扩展名"><a href="#扩展名" class="headerlink" title="扩展名"></a>扩展名</h3><p>一般是.php结尾，但是，可以使用其他命名，列如，phtml等<br>cgi模式       module模式</p>
+<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><p>apache服务器；PHP运行环境，mysql数据库</p>
+<h3 id="PHP中的输入输出"><a href="#PHP中的输入输出" class="headerlink" title="PHP中的输入输出"></a>PHP中的输入输出</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>   输出  空格和括号都可以输出</span><br><span class="line">输出需要换行中间加&lt;br&gt;</span><br><span class="line"><span class="built_in">print</span>(<span class="string">""</span>); print_r;    <span class="built_in">print</span><span class="_">-f</span>  </span><br><span class="line">die(<span class="string">""</span>); 推出程序，提出警告</span><br><span class="line">var_dump();    显示一个变量的类型</span><br><span class="line">input</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$_GET</span>[<span class="string">"接受的参数"</span>]  POST也可以取 </span><br><span class="line">服务端输入  <span class="variable">$_POST</span>   <span class="variable">$_GET</span>  <span class="variable">$_REQUEST</span></span><br><span class="line">客户端输入  </span><br><span class="line"><span class="variable">$argc</span>   显示出来传了几个参数</span><br><span class="line"><span class="variable">$argv</span>   </span><br><span class="line">getopt(options <span class="string">'参数用冒号分隔'</span>)</span><br><span class="line">fwrite(STDOUT,<span class="string">'请输入用户名：'</span>); 标准输出，起显示作用</span><br><span class="line">fgets(STDIN); 标准输入，键盘打输出</span><br></pre></td></tr></table></figure>
+
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p> ; 代表一串代码结束</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">布尔类型(bool):     True   False</span><br><span class="line">整形（int）:        数字  （正数、0、负数）</span><br><span class="line">浮点型（<span class="built_in">float</span>）:    小数   </span><br><span class="line">字符串（string）：  <span class="string">''</span>  <span class="string">""</span>  &lt;&lt;&lt;EOF    EOF</span><br><span class="line">资源（resource）：  STDIN    STDOUT   STDERROR   打开的网络连接</span><br><span class="line">空类型（NULL）  ：  什么都没有  NULL</span><br><span class="line">数组（array）   ：  集合体  [1,2,3,4,5,6]  [<span class="string">'name'</span> =&gt;<span class="string">'zs'</span>]</span><br><span class="line">对象（class）   ：  用 new person 创建的内容</span><br><span class="line">使用var_dump()来查看类型</span><br></pre></td></tr></table></figure>
+
+<h3 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h3><p>一$符号开始，后面跟着变量名称<br>定义变量名字的时候，只能a-z，0-9，_</p>
+<h3 id="PHP中的常量："><a href="#PHP中的常量：" class="headerlink" title="PHP中的常量："></a>PHP中的常量：</h3><p>常量一旦赋值不会改变，尽量使用大写<br>常量分为系统常量和自定义常量<br>常量可以理解为值不会有改变的量</p>
+<h3 id="定义常量"><a href="#定义常量" class="headerlink" title="定义常量"></a>定义常量</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">    define(<span class="string">""</span>)</span><br><span class="line">__FILE__;   当前文件的绝对路径</span><br><span class="line">__DIR__;    当前文件所在的文件夹</span><br><span class="line">__LINE__;   当前代码所在行数</span><br><span class="line">PHP_VERSION;  当前PHP版本</span><br><span class="line">PHP_OS;      当前操作系统</span><br><span class="line">PHP_EOL;     当前系统的换行符</span><br><span class="line"><span class="variable">$_SERVER</span>[<span class="string">'HTTP_USER_AGENT'</span>];  浏览器信息</span><br><span class="line">DIRECTORY_SEPARATOR;   自适应斜杠</span><br></pre></td></tr></table></figure>
+
+<h3 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h3><p>在PHP中除了单引号，任何字符放入单引号中，将没有任何意义<br>在PHP中双引号，放入特殊字符，将会有特殊的意义<br>EOF中变量有意义，其他特殊字符没有意义<br>转义：  \  普通字符串变为特殊字符串，特殊字符串变为普通字符</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">خانه</a></li>
+         
+          <li><a href="/about/">درباره</a></li>
+         
+          <li><a href="/archives/">نوشته‌ها</a></li>
+         
+          <li><a href="/projects_url">پروژه‌ها</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#格式"><span class="toc-number">1.1.</span> <span class="toc-text">格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#扩展名"><span class="toc-number">1.2.</span> <span class="toc-text">扩展名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置环境"><span class="toc-number">1.3.</span> <span class="toc-text">配置环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP中的输入输出"><span class="toc-number">1.4.</span> <span class="toc-text">PHP中的输入输出</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#语法"><span class="toc-number">1.5.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#变量"><span class="toc-number">1.6.</span> <span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义变量"><span class="toc-number">1.7.</span> <span class="toc-text">定义变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP中的常量："><span class="toc-number">1.8.</span> <span class="toc-text">PHP中的常量：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义常量"><span class="toc-number">1.9.</span> <span class="toc-text">定义常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#转义"><span class="toc-number">1.10.</span> <span class="toc-text">转义</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/05/PHP（一）/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/05/PHP（一）/&text=介绍PHP"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/05/PHP（一）/&title=介绍PHP"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/05/PHP（一）/&is_video=false&description=介绍PHP"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=介绍PHP&body=Check out this article: http://yoursite.com/2019/08/05/PHP（一）/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/05/PHP（一）/&title=介绍PHP"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/05/PHP（一）/&title=介绍PHP"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/05/PHP（一）/&title=介绍PHP"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/05/PHP（一）/&title=介绍PHP"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/05/PHP（一）/&name=介绍PHP&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> منو</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> محتوا</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> اشتراک‌گذاری</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> بالا</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    حق‌کپی &copy; 2019 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">خانه</a></li>
+         
+          <li><a href="/about/">درباره</a></li>
+         
+          <li><a href="/archives/">نوشته‌ها</a></li>
+         
+          <li><a href="/projects_url">پروژه‌ها</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

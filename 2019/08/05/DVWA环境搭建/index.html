@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="1，进入到/var/www/html目录下，然后wget下载dvwa文件，unzip解压zip文件2，解压后修改文件名DVWA-master 改为 dvwa3，修改文件/var/www/gtml/dvwa/config  中的config.inc.php.dist 改为 config.inc.php4，进入到/etc文件夹下，打开php.ini，把allow_url_include=Off修改为O">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何搭建DVWA">
+<meta property="og:url" content="http://yoursite.com/2019/08/05/DVWA环境搭建/index.html">
+<meta property="og:site_name" content="D-yu">
+<meta property="og:description" content="1，进入到/var/www/html目录下，然后wget下载dvwa文件，unzip解压zip文件2，解压后修改文件名DVWA-master 改为 dvwa3，修改文件/var/www/gtml/dvwa/config  中的config.inc.php.dist 改为 config.inc.php4，进入到/etc文件夹下，打开php.ini，把allow_url_include=Off修改为O">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-05T14:41:10.068Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何搭建DVWA">
+<meta name="twitter:description" content="1，进入到/var/www/html目录下，然后wget下载dvwa文件，unzip解压zip文件2，解压后修改文件名DVWA-master 改为 dvwa3，修改文件/var/www/gtml/dvwa/config  中的config.inc.php.dist 改为 config.inc.php4，进入到/etc文件夹下，打开php.ini，把allow_url_include=Off修改为O">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>如何搭建DVWA</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">خانه</a></li>
+         
+          <li><a href="/about/">درباره</a></li>
+         
+          <li><a href="/archives/">نوشته‌ها</a></li>
+         
+          <li><a href="/projects_url">پروژه‌ها</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/08/05/PHP（一）/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/08/05/搭建GIT/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">پست پیشین</span>
+      <span id="i-next" class="info" style="display:none;">پست یعدی</span>
+      <span id="i-top" class="info" style="display:none;">بازگشت به بالا</span>
+      <span id="i-share" class="info" style="display:none;">اشتراک‌گذاری</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/05/DVWA环境搭建/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&text=如何搭建DVWA"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&title=如何搭建DVWA"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&is_video=false&description=如何搭建DVWA"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=如何搭建DVWA&body=Check out this article: http://yoursite.com/2019/08/05/DVWA环境搭建/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&title=如何搭建DVWA"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&title=如何搭建DVWA"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&title=如何搭建DVWA"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&title=如何搭建DVWA"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&name=如何搭建DVWA&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1，进入到-var-www-html目录下，然后wget下载dvwa文件，unzip解压zip文件"><span class="toc-number">1.</span> <span class="toc-text">1，进入到/var/www/html目录下，然后wget下载dvwa文件，unzip解压zip文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2，解压后修改文件名DVWA-master-改为-dvwa"><span class="toc-number">2.</span> <span class="toc-text">2，解压后修改文件名DVWA-master 改为 dvwa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3，修改文件-var-www-gtml-dvwa-config-中的config-inc-php-dist-改为-config-inc-php"><span class="toc-number">3.</span> <span class="toc-text">3，修改文件/var/www/gtml/dvwa/config  中的config.inc.php.dist 改为 config.inc.php</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4，进入到-etc文件夹下，打开php-ini，把allow-url-include-Off修改为On，保存退出，重启服务"><span class="toc-number">4.</span> <span class="toc-text">4，进入到/etc文件夹下，打开php.ini，把allow_url_include=Off修改为On，保存退出，重启服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5，进入-var-www-html-dvwa-config文件夹下，修改config-inc-php"><span class="toc-number">5.</span> <span class="toc-text">5，进入/var/www/html/dvwa/config文件夹下，修改config.inc.php</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6，进入-var-www-html文件中修改dvwa的用户和用户组为apache"><span class="toc-number">6.</span> <span class="toc-text">6，进入/var/www/html文件中修改dvwa的用户和用户组为apache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7，新建一个新的数据库用户。"><span class="toc-number">7.</span> <span class="toc-text">7，新建一个新的数据库用户。</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        如何搭建DVWA
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">D-yu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-08-05T14:41:10.046Z" itemprop="datePublished">2019-08-05</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="1，进入到-var-www-html目录下，然后wget下载dvwa文件，unzip解压zip文件"><a href="#1，进入到-var-www-html目录下，然后wget下载dvwa文件，unzip解压zip文件" class="headerlink" title="1，进入到/var/www/html目录下，然后wget下载dvwa文件，unzip解压zip文件"></a>1，进入到/var/www/html目录下，然后wget下载dvwa文件，unzip解压zip文件</h3><h3 id="2，解压后修改文件名DVWA-master-改为-dvwa"><a href="#2，解压后修改文件名DVWA-master-改为-dvwa" class="headerlink" title="2，解压后修改文件名DVWA-master 改为 dvwa"></a>2，解压后修改文件名DVWA-master 改为 dvwa</h3><h3 id="3，修改文件-var-www-gtml-dvwa-config-中的config-inc-php-dist-改为-config-inc-php"><a href="#3，修改文件-var-www-gtml-dvwa-config-中的config-inc-php-dist-改为-config-inc-php" class="headerlink" title="3，修改文件/var/www/gtml/dvwa/config  中的config.inc.php.dist 改为 config.inc.php"></a>3，修改文件/var/www/gtml/dvwa/config  中的config.inc.php.dist 改为 config.inc.php</h3><h3 id="4，进入到-etc文件夹下，打开php-ini，把allow-url-include-Off修改为On，保存退出，重启服务"><a href="#4，进入到-etc文件夹下，打开php-ini，把allow-url-include-Off修改为On，保存退出，重启服务" class="headerlink" title="4，进入到/etc文件夹下，打开php.ini，把allow_url_include=Off修改为On，保存退出，重启服务"></a>4，进入到/etc文件夹下，打开php.ini，把allow_url_include=Off修改为On，保存退出，重启服务</h3><h3 id="5，进入-var-www-html-dvwa-config文件夹下，修改config-inc-php"><a href="#5，进入-var-www-html-dvwa-config文件夹下，修改config-inc-php" class="headerlink" title="5，进入/var/www/html/dvwa/config文件夹下，修改config.inc.php"></a>5，进入/var/www/html/dvwa/config文件夹下，修改config.inc.php</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">把<span class="variable">$_DVWA</span>[ ‘db_password ’ ] = ‘p@ssw0rd’修改为mysql中root用户的密码，填写公钥和私钥。</span><br><span class="line"></span><br><span class="line"> public_key: 6LePqhAUAAAAAH6Bn2okO9-8G-zNw46PNhotV4Q6</span><br><span class="line"> private_key: 6LePqhAUAAAAAMVqhBbFr1NVA9H13FkyfAgBeZYx</span><br></pre></td></tr></table></figure>
+
+<h3 id="6，进入-var-www-html文件中修改dvwa的用户和用户组为apache"><a href="#6，进入-var-www-html文件中修改dvwa的用户和用户组为apache" class="headerlink" title="6，进入/var/www/html文件中修改dvwa的用户和用户组为apache"></a>6，进入/var/www/html文件中修改dvwa的用户和用户组为apache</h3><p> chown-R apache：apache dvwa</p>
+<h3 id="7，新建一个新的数据库用户。"><a href="#7，新建一个新的数据库用户。" class="headerlink" title="7，新建一个新的数据库用户。"></a>7，新建一个新的数据库用户。</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> [root@localhost DVWA]<span class="comment"># mysql -uroot -p</span></span><br><span class="line"></span><br><span class="line">Enter password:(mysql的密码)</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; create database dvwa;</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; grant all on dvwa.* todvwa@localhost identified by <span class="string">'123456'</span>; </span><br><span class="line"></span><br><span class="line">注意此处的123456是指你为dvwa这个数据库用户设置的密码。</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; flush privileges;</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; <span class="built_in">exit</span></span><br><span class="line">[root@localhost DVWA]<span class="comment"># systemctl restart httpd</span></span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">خانه</a></li>
+         
+          <li><a href="/about/">درباره</a></li>
+         
+          <li><a href="/archives/">نوشته‌ها</a></li>
+         
+          <li><a href="/projects_url">پروژه‌ها</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1，进入到-var-www-html目录下，然后wget下载dvwa文件，unzip解压zip文件"><span class="toc-number">1.</span> <span class="toc-text">1，进入到/var/www/html目录下，然后wget下载dvwa文件，unzip解压zip文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2，解压后修改文件名DVWA-master-改为-dvwa"><span class="toc-number">2.</span> <span class="toc-text">2，解压后修改文件名DVWA-master 改为 dvwa</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3，修改文件-var-www-gtml-dvwa-config-中的config-inc-php-dist-改为-config-inc-php"><span class="toc-number">3.</span> <span class="toc-text">3，修改文件/var/www/gtml/dvwa/config  中的config.inc.php.dist 改为 config.inc.php</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4，进入到-etc文件夹下，打开php-ini，把allow-url-include-Off修改为On，保存退出，重启服务"><span class="toc-number">4.</span> <span class="toc-text">4，进入到/etc文件夹下，打开php.ini，把allow_url_include=Off修改为On，保存退出，重启服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5，进入-var-www-html-dvwa-config文件夹下，修改config-inc-php"><span class="toc-number">5.</span> <span class="toc-text">5，进入/var/www/html/dvwa/config文件夹下，修改config.inc.php</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6，进入-var-www-html文件中修改dvwa的用户和用户组为apache"><span class="toc-number">6.</span> <span class="toc-text">6，进入/var/www/html文件中修改dvwa的用户和用户组为apache</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7，新建一个新的数据库用户。"><span class="toc-number">7.</span> <span class="toc-text">7，新建一个新的数据库用户。</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/05/DVWA环境搭建/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&text=如何搭建DVWA"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&title=如何搭建DVWA"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&is_video=false&description=如何搭建DVWA"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=如何搭建DVWA&body=Check out this article: http://yoursite.com/2019/08/05/DVWA环境搭建/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&title=如何搭建DVWA"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&title=如何搭建DVWA"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&title=如何搭建DVWA"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&title=如何搭建DVWA"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/05/DVWA环境搭建/&name=如何搭建DVWA&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> منو</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> محتوا</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> اشتراک‌گذاری</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> بالا</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    حق‌کپی &copy; 2019 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">خانه</a></li>
+         
+          <li><a href="/about/">درباره</a></li>
+         
+          <li><a href="/archives/">نوشته‌ها</a></li>
+         
+          <li><a href="/projects_url">پروژه‌ها</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
