@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="PHP文件处理123456789fopen() 函数用于在 PHP 中打开文件；r   只读。在文件的开头开始。r+  读/写。在文件的开头开始。w   只写。打开并清空文件的内容；如果文件不存在，则创建新文件。w+  读/写。打开并清空文件的内容；如果文件不存在，则创建新文件。a   追加。打开并向文件末尾进行写操作，如果文件不存在，则创建新文件。a+  读/追加。通过向文件末尾写内容，来保持文">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP文件处理、Cookie、session">
+<meta property="og:url" content="http://yoursite.com/2019/08/11/PHP文件处理/index.html">
+<meta property="og:site_name" content="D-yu">
+<meta property="og:description" content="PHP文件处理123456789fopen() 函数用于在 PHP 中打开文件；r   只读。在文件的开头开始。r+  读/写。在文件的开头开始。w   只写。打开并清空文件的内容；如果文件不存在，则创建新文件。w+  读/写。打开并清空文件的内容；如果文件不存在，则创建新文件。a   追加。打开并向文件末尾进行写操作，如果文件不存在，则创建新文件。a+  读/追加。通过向文件末尾写内容，来保持文">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-11T10:49:42.102Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP文件处理、Cookie、session">
+<meta name="twitter:description" content="PHP文件处理123456789fopen() 函数用于在 PHP 中打开文件；r   只读。在文件的开头开始。r+  读/写。在文件的开头开始。w   只写。打开并清空文件的内容；如果文件不存在，则创建新文件。w+  读/写。打开并清空文件的内容；如果文件不存在，则创建新文件。a   追加。打开并向文件末尾进行写操作，如果文件不存在，则创建新文件。a+  读/追加。通过向文件末尾写内容，来保持文">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>PHP文件处理、Cookie、session</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/08/07/php（三）/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/11/PHP文件处理/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/11/PHP文件处理/&text=PHP文件处理、Cookie、session"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/11/PHP文件处理/&title=PHP文件处理、Cookie、session"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/11/PHP文件处理/&is_video=false&description=PHP文件处理、Cookie、session"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=PHP文件处理、Cookie、session&body=Check out this article: http://yoursite.com/2019/08/11/PHP文件处理/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/11/PHP文件处理/&title=PHP文件处理、Cookie、session"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/11/PHP文件处理/&title=PHP文件处理、Cookie、session"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/11/PHP文件处理/&title=PHP文件处理、Cookie、session"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/11/PHP文件处理/&title=PHP文件处理、Cookie、session"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/11/PHP文件处理/&name=PHP文件处理、Cookie、session&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP文件处理"><span class="toc-number">1.</span> <span class="toc-text">PHP文件处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP对文件的操作"><span class="toc-number">2.</span> <span class="toc-text">PHP对文件的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP对文件夹的操作"><span class="toc-number">3.</span> <span class="toc-text">PHP对文件夹的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-Cookie"><span class="toc-number">4.</span> <span class="toc-text">PHP Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-session"><span class="toc-number">5.</span> <span class="toc-text">PHP session</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP包含文件"><span class="toc-number">6.</span> <span class="toc-text">PHP包含文件</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        PHP文件处理、Cookie、session
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">D-yu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-08-11T10:50:10.001Z" itemprop="datePublished">2019-08-11</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="PHP文件处理"><a href="#PHP文件处理" class="headerlink" title="PHP文件处理"></a>PHP文件处理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">fopen() 函数用于在 PHP 中打开文件；</span><br><span class="line">r   只读。在文件的开头开始。</span><br><span class="line">r+  读/写。在文件的开头开始。</span><br><span class="line">w   只写。打开并清空文件的内容；如果文件不存在，则创建新文件。</span><br><span class="line">w+  读/写。打开并清空文件的内容；如果文件不存在，则创建新文件。</span><br><span class="line">a   追加。打开并向文件末尾进行写操作，如果文件不存在，则创建新文件。</span><br><span class="line">a+  读/追加。通过向文件末尾写内容，来保持文件内容。</span><br><span class="line">x   只写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误。</span><br><span class="line">x+  读/写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误。</span><br></pre></td></tr></table></figure>
+
+<h3 id="PHP对文件的操作"><a href="#PHP对文件的操作" class="headerlink" title="PHP对文件的操作"></a>PHP对文件的操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">fclose();     关闭</span><br><span class="line">fgets();     读取文件的一行</span><br><span class="line">fwrite();     写</span><br><span class="line">fread();      读取指定长度的内容</span><br><span class="line">feof();       判断光标是否到文件末尾</span><br><span class="line">file_get_contens(<span class="string">'filename'</span>，<span class="string">'指定长度'</span>)  读全部内容</span><br><span class="line">file_get_contens(<span class="string">'filename'</span>,<span class="string">'  '</span>)   直接覆盖性的向文件中写内容，如果文件不存在创建新文件。</span><br><span class="line">读取全部内容</span><br><span class="line"><span class="variable">$f</span> = fopen(<span class="string">'a.txt'</span>,<span class="string">'r'</span>);</span><br><span class="line"><span class="keyword">while</span>(!feof(<span class="variable">$f</span>))&#123;</span><br><span class="line">    <span class="built_in">echo</span> fgets(<span class="variable">$f</span>);</span><br><span class="line">&#125;</span><br><span class="line">fclose(<span class="variable">$f</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="PHP对文件夹的操作"><a href="#PHP对文件夹的操作" class="headerlink" title="PHP对文件夹的操作"></a>PHP对文件夹的操作</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">创建文件夹   mkdir(<span class="string">'文件夹名称'</span>)</span><br><span class="line">删除文件夹   rmdir(<span class="string">'         '</span>)</span><br><span class="line">判断是否是一个文件夹   is_dir(<span class="string">'/tmp'</span>)  <span class="literal">true</span>/<span class="literal">false</span></span><br><span class="line">获取文件所在文件夹      dirname(<span class="string">'/  /   / '</span>)</span><br><span class="line">删除文件夹中的文件     unlink(<span class="string">'  /  /  /'</span>)</span><br><span class="line">重命名文件      rename(<span class="string">'  /  /  '</span>,<span class="string">'  /  / '</span>)</span><br><span class="line">复制文件夹      copy (<span class="string">'  /  /  '</span>,<span class="string">'  /  / '</span>)</span><br><span class="line">判断是否是一个文件    is_file(<span class="string">' / / /'</span>)    <span class="literal">true</span>/<span class="literal">false</span></span><br><span class="line">判断文件是否存在    </span><br><span class="line">filesize()</span><br><span class="line">filetype()    判断类型   不是判断文件的后缀</span><br></pre></td></tr></table></figure>
+
+<h3 id="PHP-Cookie"><a href="#PHP-Cookie" class="headerlink" title="PHP Cookie"></a>PHP Cookie</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">cookie 常用于识别用户。cookie 是一种服务器留在用户计算机上的小文件。每当同一台计算机通过浏览器请求页面时，这台计算机将会发送 cookie。</span><br><span class="line">通过 PHP，您能够创建并取回 cookie 的值。</span><br><span class="line"></span><br><span class="line">设置cookie</span><br><span class="line">setcookie(<span class="string">'username'</span>,<span class="string">'admin'</span>,time()+5)</span><br><span class="line">推出cookie</span><br><span class="line">setcookie(<span class="string">'username'</span>,<span class="string">''</span>,time()-1)</span><br></pre></td></tr></table></figure>
+
+<h3 id="PHP-session"><a href="#PHP-session" class="headerlink" title="PHP session"></a>PHP session</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">PHP session 变量用于存储关于用户会话（session）的信息，或者更改用户会话（session）的设置。Session 变量存储单一用户的信息，并且对于应用程序中的所有页面都是可用的。</span><br><span class="line"></span><br><span class="line">服务器上    session文件夹，里面存放文件 sess_dljahfkgagajkg</span><br><span class="line">100个用户    session文件夹中就有100文件</span><br><span class="line">这个session文件当中，存储有用户信息   uname=admin。 </span><br><span class="line"></span><br><span class="line">session_start();     在浏览器生成cookie    在服务器上存一个session文件</span><br></pre></td></tr></table></figure>
+
+<h3 id="PHP包含文件"><a href="#PHP包含文件" class="headerlink" title="PHP包含文件"></a>PHP包含文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在 PHP 中，您可以在服务器执行 PHP 文件之前在该文件中插入一个文件的内容。</span><br><span class="line">include 和 require 语句用于在执行流中插入写在其他文件中的有用的代码。</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP文件处理"><span class="toc-number">1.</span> <span class="toc-text">PHP文件处理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP对文件的操作"><span class="toc-number">2.</span> <span class="toc-text">PHP对文件的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP对文件夹的操作"><span class="toc-number">3.</span> <span class="toc-text">PHP对文件夹的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-Cookie"><span class="toc-number">4.</span> <span class="toc-text">PHP Cookie</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-session"><span class="toc-number">5.</span> <span class="toc-text">PHP session</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP包含文件"><span class="toc-number">6.</span> <span class="toc-text">PHP包含文件</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/11/PHP文件处理/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/11/PHP文件处理/&text=PHP文件处理、Cookie、session"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/11/PHP文件处理/&title=PHP文件处理、Cookie、session"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/11/PHP文件处理/&is_video=false&description=PHP文件处理、Cookie、session"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=PHP文件处理、Cookie、session&body=Check out this article: http://yoursite.com/2019/08/11/PHP文件处理/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/11/PHP文件处理/&title=PHP文件处理、Cookie、session"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/11/PHP文件处理/&title=PHP文件处理、Cookie、session"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/11/PHP文件处理/&title=PHP文件处理、Cookie、session"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/11/PHP文件处理/&title=PHP文件处理、Cookie、session"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/11/PHP文件处理/&name=PHP文件处理、Cookie、session&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

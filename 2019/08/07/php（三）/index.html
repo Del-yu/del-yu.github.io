@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="D-yu">
 <meta property="og:description" content="在代码中重复的执行一段相同的代码12345678910for(控制下面代码执行次数   $i=1;$i&amp;lt;10;$i++;)&amp;#123; &amp;#125;while()&amp;#123;  &amp;#125;             $i =1;变量定义写到循环外面while(true)&amp;#123;                  原理一样    ehco  ;&amp;#125;           死循环 fo">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-08-07T12:37:30.277Z">
+<meta property="og:updated_time" content="2019-08-11T10:50:34.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP循环、数组、文件处理">
 <meta name="twitter:description" content="在代码中重复的执行一段相同的代码12345678910for(控制下面代码执行次数   $i=1;$i&amp;lt;10;$i++;)&amp;#123; &amp;#125;while()&amp;#123;  &amp;#125;             $i =1;变量定义写到循环外面while(true)&amp;#123;                  原理一样    ehco  ;&amp;#125;           死循环 fo">
@@ -58,13 +58,13 @@
     <span id="nav">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="/projects_url">Projects</a></li>
+          <li><a href="/projects_url">Projectes</a></li>
         
       </ul>
     </span>
@@ -72,16 +72,18 @@
     <span id="actions">
       <ul>
         
+        <li><a class="icon" href="/2019/08/11/PHP文件处理/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
         
         <li><a class="icon" href="/2019/08/06/PHP（二）/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
         
         <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
         <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
       </ul>
-      <span id="i-prev" class="info" style="display:none;">Previous post</span>
-      <span id="i-next" class="info" style="display:none;">Next post</span>
-      <span id="i-top" class="info" style="display:none;">Back to top</span>
-      <span id="i-share" class="info" style="display:none;">Share post</span>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
     </span>
     <br/>
     <div id="share" style="display: none">
@@ -100,7 +102,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在代码中重复的执行一段相同的代码"><span class="toc-number">1.</span> <span class="toc-text">在代码中重复的执行一段相同的代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是数组："><span class="toc-number">2.</span> <span class="toc-text">什么是数组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组分两类："><span class="toc-number">3.</span> <span class="toc-text">数组分两类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值"><span class="toc-number">4.</span> <span class="toc-text">赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#array常用函数"><span class="toc-number">5.</span> <span class="toc-text">array常用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义函数"><span class="toc-number">6.</span> <span class="toc-text">自定义函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP文件处理"><span class="toc-number">7.</span> <span class="toc-text">PHP文件处理</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在代码中重复的执行一段相同的代码"><span class="toc-number">1.</span> <span class="toc-text">在代码中重复的执行一段相同的代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是数组："><span class="toc-number">2.</span> <span class="toc-text">什么是数组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组分两类："><span class="toc-number">3.</span> <span class="toc-text">数组分两类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值"><span class="toc-number">4.</span> <span class="toc-text">赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#array常用函数"><span class="toc-number">5.</span> <span class="toc-text">array常用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义函数"><span class="toc-number">6.</span> <span class="toc-text">自定义函数</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -152,8 +154,6 @@
 
 <h3 id="自定义函数"><a href="#自定义函数" class="headerlink" title="自定义函数"></a>自定义函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> 起名(<span class="variable">$num1</span>,<span class="variable">$num2</span>)&#123;  &#125;</span><br><span class="line">如需让函数返回一个值，请使用 <span class="built_in">return</span> 语句。</span><br></pre></td></tr></table></figure>
 
-<h3 id="PHP文件处理"><a href="#PHP文件处理" class="headerlink" title="PHP文件处理"></a>PHP文件处理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">fopen() 函数用于在 PHP 中打开文件；</span><br><span class="line">r   只读。在文件的开头开始。</span><br><span class="line">r+  读/写。在文件的开头开始。</span><br><span class="line">w   只写。打开并清空文件的内容；如果文件不存在，则创建新文件。</span><br><span class="line">w+  读/写。打开并清空文件的内容；如果文件不存在，则创建新文件。</span><br><span class="line">a   追加。打开并向文件末尾进行写操作，如果文件不存在，则创建新文件。</span><br><span class="line">a+  读/追加。通过向文件末尾写内容，来保持文件内容。</span><br><span class="line">x   只写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误。</span><br><span class="line">x+  读/写。创建新文件。如果文件已存在，则返回 FALSE 和一个错误。</span><br><span class="line">fclose();     关闭</span><br><span class="line">fgets();     读取文件的一行</span><br><span class="line">fwrite();     写</span><br><span class="line">fread();      读取指定长度的内容</span><br><span class="line">feof();       判断光标是否到文件末尾</span><br></pre></td></tr></table></figure>
-
 
   </div>
 </article>
@@ -167,19 +167,19 @@
     <div id="nav-footer" style="display: none">
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="/projects_url">Projects</a></li>
+          <li><a href="/projects_url">Projectes</a></li>
         
       </ul>
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在代码中重复的执行一段相同的代码"><span class="toc-number">1.</span> <span class="toc-text">在代码中重复的执行一段相同的代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是数组："><span class="toc-number">2.</span> <span class="toc-text">什么是数组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组分两类："><span class="toc-number">3.</span> <span class="toc-text">数组分两类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值"><span class="toc-number">4.</span> <span class="toc-text">赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#array常用函数"><span class="toc-number">5.</span> <span class="toc-text">array常用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义函数"><span class="toc-number">6.</span> <span class="toc-text">自定义函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP文件处理"><span class="toc-number">7.</span> <span class="toc-text">PHP文件处理</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#在代码中重复的执行一段相同的代码"><span class="toc-number">1.</span> <span class="toc-text">在代码中重复的执行一段相同的代码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是数组："><span class="toc-number">2.</span> <span class="toc-text">什么是数组：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数组分两类："><span class="toc-number">3.</span> <span class="toc-text">数组分两类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#赋值"><span class="toc-number">4.</span> <span class="toc-text">赋值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#array常用函数"><span class="toc-number">5.</span> <span class="toc-text">array常用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#自定义函数"><span class="toc-number">6.</span> <span class="toc-text">自定义函数</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
@@ -199,10 +199,10 @@
     </div>
 
     <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
         <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
     </div>
 
   </div>
@@ -217,13 +217,13 @@
     <nav>
       <ul>
          
-          <li><a href="/">Home</a></li>
+          <li><a href="/">Inici</a></li>
          
-          <li><a href="/about/">About</a></li>
+          <li><a href="/about/">Qui som</a></li>
          
-          <li><a href="/archives/">Writing</a></li>
+          <li><a href="/archives/">Articles</a></li>
          
-          <li><a href="/projects_url">Projects</a></li>
+          <li><a href="/projects_url">Projectes</a></li>
         
       </ul>
     </nav>
