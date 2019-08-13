@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="数据库分为：层次型数据库，网络式数据库，关系式数据库，关系型数据库，非关系型数据库。关系数据库按照行来存数据非关系数据库是按照集合来存数据 常见的数据库关系型数据库1234567mysql   mariadb      PHPsql  server/mssql  微软出的数据库access    asp网站sqliteoracle       java，收费postgresqldb2  非关系型数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据库介绍">
+<meta property="og:url" content="http://yoursite.com/2019/08/13/数据库/index.html">
+<meta property="og:site_name" content="D-yu">
+<meta property="og:description" content="数据库分为：层次型数据库，网络式数据库，关系式数据库，关系型数据库，非关系型数据库。关系数据库按照行来存数据非关系数据库是按照集合来存数据 常见的数据库关系型数据库1234567mysql   mariadb      PHPsql  server/mssql  微软出的数据库access    asp网站sqliteoracle       java，收费postgresqldb2  非关系型数">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-13T00:49:57.157Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据库介绍">
+<meta name="twitter:description" content="数据库分为：层次型数据库，网络式数据库，关系式数据库，关系型数据库，非关系型数据库。关系数据库按照行来存数据非关系数据库是按照集合来存数据 常见的数据库关系型数据库1234567mysql   mariadb      PHPsql  server/mssql  微软出的数据库access    asp网站sqliteoracle       java，收费postgresqldb2  非关系型数">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>数据库介绍</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/08/11/PHP文件处理/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/13/数据库/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/13/数据库/&text=数据库介绍"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/13/数据库/&title=数据库介绍"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/13/数据库/&is_video=false&description=数据库介绍"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=数据库介绍&body=Check out this article: http://yoursite.com/2019/08/13/数据库/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/13/数据库/&title=数据库介绍"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/13/数据库/&title=数据库介绍"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/13/数据库/&title=数据库介绍"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/13/数据库/&title=数据库介绍"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/13/数据库/&name=数据库介绍&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库分为："><span class="toc-number">1.</span> <span class="toc-text">数据库分为：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的数据库"><span class="toc-number">2.</span> <span class="toc-text">常见的数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关系型数据库"><span class="toc-number">2.1.</span> <span class="toc-text">关系型数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非关系型数据库"><span class="toc-number">2.2.</span> <span class="toc-text">非关系型数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库命令"><span class="toc-number">2.3.</span> <span class="toc-text">数据库命令</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        数据库介绍
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">D-yu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-08-13T00:44:28.527Z" itemprop="datePublished">2019-08-13</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="数据库分为："><a href="#数据库分为：" class="headerlink" title="数据库分为："></a>数据库分为：</h2><p>层次型数据库，网络式数据库，关系式数据库，关系型数据库，非关系型数据库。<br>关系数据库按照行来存数据<br>非关系数据库是按照集合来存数据</p>
+<h2 id="常见的数据库"><a href="#常见的数据库" class="headerlink" title="常见的数据库"></a>常见的数据库</h2><h3 id="关系型数据库"><a href="#关系型数据库" class="headerlink" title="关系型数据库"></a>关系型数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mysql   mariadb      PHP</span><br><span class="line">sql  server/mssql  微软出的数据库</span><br><span class="line">access    asp网站</span><br><span class="line">sqlite</span><br><span class="line">oracle       java，收费</span><br><span class="line">postgresql</span><br><span class="line">db2</span><br></pre></td></tr></table></figure>
+
+<h3 id="非关系型数据库"><a href="#非关系型数据库" class="headerlink" title="非关系型数据库"></a>非关系型数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">mongodb   关系型和非关系型结合产生的数据库</span><br><span class="line">redis     用来做缓存服务器，中转作用，一般数据不是很重要。源码编译进行安装</span><br><span class="line"></span><br><span class="line">MySql数据库</span><br><span class="line">连接数据库：在mysql目录下bin文件夹执行：cmd：mysql  -uroot -p</span><br><span class="line">或用PHPstudy 连接</span><br><span class="line"></span><br><span class="line">数据存储操作</span><br><span class="line">mysql进行存储操作 </span><br><span class="line">mysql客户端发送指令   mysql  -uroot -p</span><br><span class="line">yum或者apt -s  安装的数据库，默认的路径在var/lib/mysql/</span><br><span class="line"></span><br><span class="line">access    salite</span><br><span class="line">只有一个客户端，直接打开文件，进行读取操作</span><br></pre></td></tr></table></figure>
+
+<h3 id="数据库命令"><a href="#数据库命令" class="headerlink" title="数据库命令"></a>数据库命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">查看数据库</span><br><span class="line">show databases;</span><br><span class="line"></span><br><span class="line">创建一个数据库</span><br><span class="line">create database 要创建数据库的名称；</span><br><span class="line"></span><br><span class="line">删除一个数据库</span><br><span class="line">drop database 删除的数据库名称;</span><br><span class="line"></span><br><span class="line">切换库</span><br><span class="line">use 名称；</span><br><span class="line"></span><br><span class="line">创建表</span><br><span class="line">create table `库名`.创建表名称(</span><br><span class="line">`id` int(0) NOT NULL AUTO_INCREMENT,</span><br><span class="line">PRIMARY KEY (`主键`)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">查看表</span><br><span class="line">show tables；</span><br><span class="line"></span><br><span class="line">删除一个表</span><br><span class="line">drop table 表名称；</span><br><span class="line"></span><br><span class="line">添加数据</span><br><span class="line">INSERT INTO `mynews`.`yonghu`(</span><br><span class="line">`必填名称`,逗号分隔)VALUES(</span><br><span class="line">`填写的内容`,逗号分隔</span><br><span class="line">)；</span><br><span class="line"></span><br><span class="line">不允许重复</span><br><span class="line">UNIQUE </span><br><span class="line"></span><br><span class="line"> 删除数据</span><br><span class="line">DELETE FROM `mynews`.`yonghu` WHERE `username` =`用户名`;</span><br><span class="line">后面加 OR 可以删除多个（&lt;;&gt;;都可以加）</span><br><span class="line"></span><br><span class="line">修改数据</span><br><span class="line">UPDATE `mynews`.`yonghu` SET `需要修改的目录`=`需要修改的内容` WHERE `id`=1</span><br><span class="line">，用逗号可同时改多个</span><br><span class="line">查询所有内容</span><br><span class="line">SELECT * FROM `需要查询的库`.`需要查询的表`;</span><br><span class="line"></span><br><span class="line">查询表的结构</span><br><span class="line">describe 表名</span><br><span class="line"></span><br><span class="line">导入数据表，文件必须以.sql 结尾。</span><br><span class="line">1、进入需要存表的数据库：    use 数据库</span><br><span class="line"><span class="built_in">source</span> 文件路径</span><br><span class="line">2、mysql -uroot -p 数据库 &lt; 文件路径</span><br><span class="line">导出数据库</span><br><span class="line">mysqldump -uroot -p --all-databases（） &gt; 保存的路径.sql</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库分为："><span class="toc-number">1.</span> <span class="toc-text">数据库分为：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常见的数据库"><span class="toc-number">2.</span> <span class="toc-text">常见的数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#关系型数据库"><span class="toc-number">2.1.</span> <span class="toc-text">关系型数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#非关系型数据库"><span class="toc-number">2.2.</span> <span class="toc-text">非关系型数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库命令"><span class="toc-number">2.3.</span> <span class="toc-text">数据库命令</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/13/数据库/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/13/数据库/&text=数据库介绍"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/13/数据库/&title=数据库介绍"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/13/数据库/&is_video=false&description=数据库介绍"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=数据库介绍&body=Check out this article: http://yoursite.com/2019/08/13/数据库/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/13/数据库/&title=数据库介绍"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/13/数据库/&title=数据库介绍"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/13/数据库/&title=数据库介绍"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/13/数据库/&title=数据库介绍"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/13/数据库/&name=数据库介绍&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
