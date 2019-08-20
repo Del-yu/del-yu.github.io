@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="HTTP常用请求头12345678910111213141516171819202122232425262728293031323334353637Host客户机通过这个头，告诉服务器，想访问服务器哪台主机User-Agent携带当前的用户代理信息，一般包含浏览器、浏览器内核和操作系统的版本型号信息。Accept客户机通过这个头，告诉服务器，他支持哪些数据类型Accept-Charset表示客户端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP协议中常用的请求头和响应头">
+<meta property="og:url" content="http://yoursite.com/2019/08/20/HTTP请求头和响应头/index.html">
+<meta property="og:site_name" content="D-yu">
+<meta property="og:description" content="HTTP常用请求头12345678910111213141516171819202122232425262728293031323334353637Host客户机通过这个头，告诉服务器，想访问服务器哪台主机User-Agent携带当前的用户代理信息，一般包含浏览器、浏览器内核和操作系统的版本型号信息。Accept客户机通过这个头，告诉服务器，他支持哪些数据类型Accept-Charset表示客户端">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-20T12:20:04.676Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP协议中常用的请求头和响应头">
+<meta name="twitter:description" content="HTTP常用请求头12345678910111213141516171819202122232425262728293031323334353637Host客户机通过这个头，告诉服务器，想访问服务器哪台主机User-Agent携带当前的用户代理信息，一般包含浏览器、浏览器内核和操作系统的版本型号信息。Accept客户机通过这个头，告诉服务器，他支持哪些数据类型Accept-Charset表示客户端">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>HTTP协议中常用的请求头和响应头</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/08/20/HTTP协议/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/08/20/http和https的区别/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/20/HTTP请求头和响应头/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&text=HTTP协议中常用的请求头和响应头"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&title=HTTP协议中常用的请求头和响应头"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&is_video=false&description=HTTP协议中常用的请求头和响应头"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HTTP协议中常用的请求头和响应头&body=Check out this article: http://yoursite.com/2019/08/20/HTTP请求头和响应头/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&title=HTTP协议中常用的请求头和响应头"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&title=HTTP协议中常用的请求头和响应头"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&title=HTTP协议中常用的请求头和响应头"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&title=HTTP协议中常用的请求头和响应头"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&name=HTTP协议中常用的请求头和响应头&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP常用请求头"><span class="toc-number">1.</span> <span class="toc-text">HTTP常用请求头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP常用响应头"><span class="toc-number">2.</span> <span class="toc-text">HTTP常用响应头</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        HTTP协议中常用的请求头和响应头
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">D-yu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-08-20T12:20:04.676Z" itemprop="datePublished">2019-08-20</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="HTTP常用请求头"><a href="#HTTP常用请求头" class="headerlink" title="HTTP常用请求头"></a>HTTP常用请求头</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">Host</span><br><span class="line">客户机通过这个头，告诉服务器，想访问服务器哪台主机</span><br><span class="line"></span><br><span class="line">User-Agent</span><br><span class="line">携带当前的用户代理信息，一般包含浏览器、浏览器内核和操作系统的版本型号信息。</span><br><span class="line"></span><br><span class="line">Accept</span><br><span class="line">客户机通过这个头，告诉服务器，他支持哪些数据类型</span><br><span class="line"></span><br><span class="line">Accept-Charset</span><br><span class="line">表示客户端期望服务器返回的内容的编码格式。</span><br><span class="line"></span><br><span class="line">Accept-Language</span><br><span class="line">表示客户端期望服务器返回的内容的语言。</span><br><span class="line"></span><br><span class="line">Accept-Encoding</span><br><span class="line">客户机通过这个头，告诉服务器，支持哪种数据压缩格式</span><br><span class="line"></span><br><span class="line">If-Modified-Since</span><br><span class="line">客户机通过这个头，告诉服务器，数据缓存的时间</span><br><span class="line"></span><br><span class="line">Referer</span><br><span class="line">客户机通过这个头，告诉服务器，客户机是从哪个页面来的</span><br><span class="line"></span><br><span class="line">Cookie</span><br><span class="line">客户机通过这个头，可以带点数据给服务器</span><br><span class="line"></span><br><span class="line">Connection</span><br><span class="line">当客户端和服务器需要协商连接的属性时，可以使用Connection头部。比较常用的一个值是close，用来通知对方在当前请求结束后关闭连接。（表示是否需要持久连接）</span><br><span class="line"></span><br><span class="line">Date</span><br><span class="line">表示消息发送的时间，时间的描述格式由RFC822定义。</span><br><span class="line"></span><br><span class="line">Pragma</span><br><span class="line">这个头是比较常见的，在前端开发模式下经常会加上这个头部。</span><br><span class="line">当网关收到一个带有这样请求的头部时，即使内部存在该请求资源的缓存并且有效也不可以直接发送给客户端，而必须转发给后面的upstream进行处理。</span><br><span class="line">不过如果真的所有的网关都遵循这个协议的话，攻击是很容易构造的，所以它一般仅用于开发模式，防止静态资源修改后前端得不到即时更新。</span><br></pre></td></tr></table></figure>
+
+<h3 id="HTTP常用响应头"><a href="#HTTP常用响应头" class="headerlink" title="HTTP常用响应头"></a>HTTP常用响应头</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">Allow</span><br><span class="line">服务器支持哪些请求方法</span><br><span class="line"></span><br><span class="line">Location</span><br><span class="line">服务器通过这个头告诉浏览器去访问哪个页面，这个头通常配合302状态码使用</span><br><span class="line"></span><br><span class="line">Server</span><br><span class="line">服务器通过这个头，告诉浏览器服务器的类型</span><br><span class="line"></span><br><span class="line">Content-Encoding</span><br><span class="line">服务器通过这个头告诉浏览器，回送的数据采用的压缩格式</span><br><span class="line"></span><br><span class="line">Centent-Length</span><br><span class="line">服务器通过这个头告诉浏览器，回送的数据的大小长度</span><br><span class="line"></span><br><span class="line">Content-Language</span><br><span class="line">支持的语言类型</span><br><span class="line"></span><br><span class="line">Content-Type</span><br><span class="line">服务器通过这个头告诉浏览器，回送数据的类型</span><br><span class="line"></span><br><span class="line">Last-Modified</span><br><span class="line">服务器通过这个头告诉浏览器，缓存资源的最后修改时间</span><br><span class="line"></span><br><span class="line">Refresh</span><br><span class="line">服务器通过这个头告诉浏览器，定时刷新网页</span><br><span class="line"></span><br><span class="line">Set-Cookie</span><br><span class="line">与页面关联的Cookie</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP常用请求头"><span class="toc-number">1.</span> <span class="toc-text">HTTP常用请求头</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP常用响应头"><span class="toc-number">2.</span> <span class="toc-text">HTTP常用响应头</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/20/HTTP请求头和响应头/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&text=HTTP协议中常用的请求头和响应头"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&title=HTTP协议中常用的请求头和响应头"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&is_video=false&description=HTTP协议中常用的请求头和响应头"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=HTTP协议中常用的请求头和响应头&body=Check out this article: http://yoursite.com/2019/08/20/HTTP请求头和响应头/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&title=HTTP协议中常用的请求头和响应头"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&title=HTTP协议中常用的请求头和响应头"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&title=HTTP协议中常用的请求头和响应头"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&title=HTTP协议中常用的请求头和响应头"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/20/HTTP请求头和响应头/&name=HTTP协议中常用的请求头和响应头&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
