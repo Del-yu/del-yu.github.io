@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="当Web应用向后台数据库传递SQL语句进行数据库操作时。如果对用户输入的参数没有经过严格的过滤处理，那么攻击者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。分为两大类：整数型  和   字符型判断数字型和字符型   -1 判断网站是否有注入，同时在做这个的时候，就可以判断出来是数字型还是字符型   通过输入 ‘ 注释去判断 12select * from news">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL注入原理介绍">
+<meta property="og:url" content="http://yoursite.com/2019/08/29/SQL注入原理介绍/index.html">
+<meta property="og:site_name" content="D-yu">
+<meta property="og:description" content="当Web应用向后台数据库传递SQL语句进行数据库操作时。如果对用户输入的参数没有经过严格的过滤处理，那么攻击者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。分为两大类：整数型  和   字符型判断数字型和字符型   -1 判断网站是否有注入，同时在做这个的时候，就可以判断出来是数字型还是字符型   通过输入 ‘ 注释去判断 12select * from news">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-29T00:36:28.678Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL注入原理介绍">
+<meta name="twitter:description" content="当Web应用向后台数据库传递SQL语句进行数据库操作时。如果对用户输入的参数没有经过严格的过滤处理，那么攻击者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。分为两大类：整数型  和   字符型判断数字型和字符型   -1 判断网站是否有注入，同时在做这个的时候，就可以判断出来是数字型还是字符型   通过输入 ‘ 注释去判断 12select * from news">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>SQL注入原理介绍</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/08/29/Sql-Inject基于函数报错注入/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/08/27/通过PHPinfo，php探针可以获取到的信息/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/29/SQL注入原理介绍/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&text=SQL注入原理介绍"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&title=SQL注入原理介绍"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&is_video=false&description=SQL注入原理介绍"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SQL注入原理介绍&body=Check out this article: http://yoursite.com/2019/08/29/SQL注入原理介绍/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&title=SQL注入原理介绍"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&title=SQL注入原理介绍"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&title=SQL注入原理介绍"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&title=SQL注入原理介绍"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&name=SQL注入原理介绍&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#当Web应用向后台数据库传递SQL语句进行数据库操作时。如果对用户输入的参数没有经过严格的过滤处理，那么攻击者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。"><span class="toc-number">1.</span> <span class="toc-text">当Web应用向后台数据库传递SQL语句进行数据库操作时。如果对用户输入的参数没有经过严格的过滤处理，那么攻击者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分为两大类：整数型-和-字符型"><span class="toc-number">2.</span> <span class="toc-text">分为两大类：整数型  和   字符型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断数字型和字符型"><span class="toc-number">3.</span> <span class="toc-text">判断数字型和字符型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断网站是否有注入，同时在做这个的时候，就可以判断出来是数字型还是字符型"><span class="toc-number">4.</span> <span class="toc-text">判断网站是否有注入，同时在做这个的时候，就可以判断出来是数字型还是字符型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL注入漏洞的本质："><span class="toc-number">5.</span> <span class="toc-text">SQL注入漏洞的本质：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL注入漏洞有两个关键条件："><span class="toc-number">6.</span> <span class="toc-text">SQL注入漏洞有两个关键条件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#万能密码"><span class="toc-number">7.</span> <span class="toc-text">万能密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库类型分类"><span class="toc-number">8.</span> <span class="toc-text">数据库类型分类</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        SQL注入原理介绍
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">D-yu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-08-29T00:36:49.134Z" itemprop="datePublished">2019-08-29</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="当Web应用向后台数据库传递SQL语句进行数据库操作时。如果对用户输入的参数没有经过严格的过滤处理，那么攻击者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。"><a href="#当Web应用向后台数据库传递SQL语句进行数据库操作时。如果对用户输入的参数没有经过严格的过滤处理，那么攻击者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。" class="headerlink" title="当Web应用向后台数据库传递SQL语句进行数据库操作时。如果对用户输入的参数没有经过严格的过滤处理，那么攻击者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。"></a>当Web应用向后台数据库传递SQL语句进行数据库操作时。如果对用户输入的参数没有经过严格的过滤处理，那么攻击者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。</h3><h3 id="分为两大类：整数型-和-字符型"><a href="#分为两大类：整数型-和-字符型" class="headerlink" title="分为两大类：整数型  和   字符型"></a>分为两大类：整数型  和   字符型</h3><h3 id="判断数字型和字符型"><a href="#判断数字型和字符型" class="headerlink" title="判断数字型和字符型"></a>判断数字型和字符型</h3><p>   -1</p>
+<h3 id="判断网站是否有注入，同时在做这个的时候，就可以判断出来是数字型还是字符型"><a href="#判断网站是否有注入，同时在做这个的时候，就可以判断出来是数字型还是字符型" class="headerlink" title="判断网站是否有注入，同时在做这个的时候，就可以判断出来是数字型还是字符型"></a>判断网站是否有注入，同时在做这个的时候，就可以判断出来是数字型还是字符型</h3><p>   通过输入 ‘ 注释去判断</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from news <span class="built_in">where</span> id =<span class="string">'1'</span> -- <span class="string">'</span></span><br><span class="line"><span class="string">select * from news where id =2</span></span><br></pre></td></tr></table></figure>
+
+<p>   区分数字型和字符型，区分两者由于代码原因，利用时手法不一样</p>
+<h3 id="SQL注入漏洞的本质："><a href="#SQL注入漏洞的本质：" class="headerlink" title="SQL注入漏洞的本质："></a>SQL注入漏洞的本质：</h3><p>   把用户输入的数据当做代码来执行，违背了“数据与代码分离”的原则。</p>
+<h3 id="SQL注入漏洞有两个关键条件："><a href="#SQL注入漏洞有两个关键条件：" class="headerlink" title="SQL注入漏洞有两个关键条件："></a>SQL注入漏洞有两个关键条件：</h3><p>   用户能控制输入的内容<br>   Web应用把用户输入的内容带入到数据库中执行</p>
+<h3 id="万能密码"><a href="#万能密码" class="headerlink" title="万能密码"></a>万能密码</h3><p>   万能密码漏洞都是因为提交字符未加过滤或过滤不严而导致的</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">admin<span class="string">'or 1#      </span></span><br><span class="line"><span class="string">or 1=1#         </span></span><br><span class="line"><span class="string">"or "a"="a</span></span><br><span class="line"><span class="string">'</span>)or(<span class="string">'a'</span>=<span class="string">'a</span></span><br><span class="line"><span class="string">or 1=1--</span></span><br><span class="line"><span class="string">'</span>or 1=1--</span><br><span class="line">a<span class="string">'or'</span> 1=1--</span><br><span class="line"><span class="string">"or 1=1--</span></span><br><span class="line"><span class="string">'or'a'='a</span></span><br><span class="line"><span class="string">"</span>or<span class="string">"="</span>a<span class="string">'='</span>a</span><br><span class="line"><span class="string">'or'</span><span class="string">'='</span></span><br><span class="line"><span class="string">'or'</span>=<span class="string">'or'</span></span><br><span class="line">1 or <span class="string">'1'</span>=<span class="string">'1'</span>=1</span><br><span class="line">1 or <span class="string">'1'</span>=<span class="string">'1'</span> or 1=1</span><br><span class="line"><span class="string">'OR 1=1%00</span></span><br><span class="line"><span class="string">通过注释符号#、-- 、/* */注释</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数据库类型分类"><a href="#数据库类型分类" class="headerlink" title="数据库类型分类"></a>数据库类型分类</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">SQL型</span><br><span class="line"></span><br><span class="line">   oracle</span><br><span class="line">   mysql</span><br><span class="line">   mssql</span><br><span class="line">   access</span><br><span class="line">   sqlite</span><br><span class="line">   PostgreSQL</span><br><span class="line"></span><br><span class="line"> noSQL型</span><br><span class="line"></span><br><span class="line">   mongodb</span><br><span class="line">   redis</span><br></pre></td></tr></table></figure>
+
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#当Web应用向后台数据库传递SQL语句进行数据库操作时。如果对用户输入的参数没有经过严格的过滤处理，那么攻击者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。"><span class="toc-number">1.</span> <span class="toc-text">当Web应用向后台数据库传递SQL语句进行数据库操作时。如果对用户输入的参数没有经过严格的过滤处理，那么攻击者就可以构造特殊的SQL语句，直接输入数据库引擎执行，获取或修改数据库中的数据。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分为两大类：整数型-和-字符型"><span class="toc-number">2.</span> <span class="toc-text">分为两大类：整数型  和   字符型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断数字型和字符型"><span class="toc-number">3.</span> <span class="toc-text">判断数字型和字符型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#判断网站是否有注入，同时在做这个的时候，就可以判断出来是数字型还是字符型"><span class="toc-number">4.</span> <span class="toc-text">判断网站是否有注入，同时在做这个的时候，就可以判断出来是数字型还是字符型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL注入漏洞的本质："><span class="toc-number">5.</span> <span class="toc-text">SQL注入漏洞的本质：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SQL注入漏洞有两个关键条件："><span class="toc-number">6.</span> <span class="toc-text">SQL注入漏洞有两个关键条件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#万能密码"><span class="toc-number">7.</span> <span class="toc-text">万能密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据库类型分类"><span class="toc-number">8.</span> <span class="toc-text">数据库类型分类</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/29/SQL注入原理介绍/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&text=SQL注入原理介绍"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&title=SQL注入原理介绍"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&is_video=false&description=SQL注入原理介绍"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=SQL注入原理介绍&body=Check out this article: http://yoursite.com/2019/08/29/SQL注入原理介绍/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&title=SQL注入原理介绍"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&title=SQL注入原理介绍"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&title=SQL注入原理介绍"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&title=SQL注入原理介绍"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/29/SQL注入原理介绍/&name=SQL注入原理介绍&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

